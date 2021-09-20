@@ -1,9 +1,154 @@
-<div style="text-align: center">
-  <h1>Welcome to symbiota2!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    alt="Nx - Smart, Extensible Build Framework"
-  />
-</div>
-<div>Message: {{ hello$ | async | json }}</div>
+<nav class="main-nav">
+  <input type="checkbox" id="searchbox" class="checkhack" />
+  <div class="nav-container">
+    <div class="logo-container">
+      <a routerlink="/"
+        ><img
+          src="assets/img/Symbiota2logo-150wide.png"
+          alt="Logo"
+          class="logo"
+      /></a>
+    </div>
+    <input
+      id="menu-toggle"
+      type="radio"
+      name="tst"
+      class="menu-toggle hidden"
+    /><input
+      id="cross-toggle"
+      type="radio"
+      name="tst"
+      class="cross-toggle hidden"
+    />
+    <div class="nav-holder">
+      <div class="cross__icon-container">
+        <label for="cross-toggle" class="cross-toggle"></label
+        ><svg class="cross__icon">
+          <use xlink:href="assets/img/sprite.svg#icon-cross"></use>
+        </svg>
+      </div>
+      <div class="nav">
+        <ul class="nav-list">
+          <li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{
+              exact: true
+            }"
+          >
+            <a [routerLink]="['/']">Home</a>
+            <ul>
+              <li><a (click)="scroll('/', 'proposal')">Proposal</a></li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/progress">Progress</a>
+            <ul>
+              <li><a (click)="scroll('progress', 'todo')">To do </a></li>
+              <li><a (click)="scroll('progress', 'byYear')">By year </a></li>
+              <li><a (click)="scroll('progress', 'websites')">Websites </a></li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/interactions">Interactions</a>
+            <ul>
+              <li>
+                <a (click)="scroll('interactions', 'open-discussion')"
+                  >Open discussion</a
+                >
+              </li>
+              <li>
+                <a (click)="scroll('interactions', 'wish-list')">Wish lists</a>
+              </li>
+              <li>
+                <a (click)="scroll('interactions', 'presentation')"
+                  >Presentation</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/help-pages">Help pages</a>
+            <ul>
+              <li>
+                <a (click)="scroll('help-pages', 'collection-metadata')"
+                  >Collection metadata</a
+                >
+              </li>
+              <li>
+                <a (click)="scroll('help-pages', 'ecological-fields')"
+                  >Ecological fields</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/contact">Contact Us</a>
+          </li>
+          <!-- <li routerLinkActive="active">
+            <a routerLink="/register">Register</a>
+          </li> -->
+        </ul>
+      </div>
+      <div class="searchIcon__holder">
+        <label for="searchbox" class="search-label"></label
+        ><svg class="search__icon">
+          <use xlink:href="assets/img/sprite.svg#icon-search"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="menu-container">
+      <label for="menu-toggle" class="menu-toggle"></label
+      ><svg class="menu__icon">
+        <use xlink:href="assets/img/sprite.svg#icon-menu"></use>
+      </svg>
+    </div>
+  </div>
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Type here to search"
+      autofocus=""
+      class="search-bar__input"
+    /><a href="#" class="btn search-bar__button">Search</a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<section class="section-footer">
+  <div class="footer-description">
+    <a routerlink="/">
+      <img src="assets/img/Symbiota2_150_DARk4.png" alt="Logo" class="logo" />
+    </a>
+    <p>
+      This site is dedicated to providing information about the Symbiota2
+      NSF-ABI project. The project’s goal is to revise the Symbiota code into a
+      more modular and flexible format so as to promote the involvement of more
+      developers and provide end-users with greater functionality.
+    </p>
+  </div>
+  <div class="footer-newsletter">
+    <h3 class="margin-bottom-mid">Newsletter</h3>
+    <p>Subscribe to receive inspiration, news, and ideas in your inbox.</p>
+    <input
+      type="text"
+      placeholder="Enter your email"
+      class="footer-newsletter__input"
+    />
+    <a _ngcontent-my-app-c10="" class="btn btn-footer">Subscribe</a>
+  </div>
+  <div class="footer-support">
+    <h3 class="margin-bottom-mid">Help/Support</h3>
+    <ul _ngcontent-my-app-c10="">
+      <li><a href="#">Support</a></li>
+      <li _ngcontent-my-app-c10=""><a href="#">Terms of use</a></li>
+      <li>
+        <a href="#">Community guideline</a>
+      </li>
+      <li><a routerlink="/" href="/">About Symbiota2</a></li>
+    </ul>
+  </div>
+  <div class="footer-social">
+    <h3 class="margin-bottom-mid">Connect with us</h3>
+  </div>
+</section>

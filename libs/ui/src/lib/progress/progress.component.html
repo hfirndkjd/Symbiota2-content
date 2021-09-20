@@ -1,0 +1,163 @@
+<div class="home-container">
+  <main class="section-main padding-top-big padding-bottom-big">
+    <div class="row" id="todo">
+      <h1 class="heading-secondary">Progress</h1>
+    </div>
+    <div class="row">
+      <h2 class="heading-tertiary">To do</h2>
+      <h3 class="heading-tertiary-2">Requirements document</h3>
+      <p>
+        The “Requirements document” was created to help show what has been done
+        and is needed to provide Symbiota2 with the same abilities as Symbiota
+        at the time the Symbiota2 project started but with improved performance
+        and usability plus greater ease of maintenance. The document also
+        provides a rough means of measuring progress towards completion of
+        release 1. For now, only the document is available. We shall develop the
+        progress summaries at the end of August.
+      </p>
+      <br />
+      <h3 class="heading-tertiary-2">
+        <a
+          href="assets/pdf/Symbiota2-requirements.pdf"
+          target="_blank"
+          class="main-link"
+          >Requirement document - Sections</a
+        >:
+      </h3>
+      <div class="padding-left-big padding-bottom-small">
+        <p>
+          <a
+            class="main-link"
+            (click)="scroll('progress/introduction-problem', '')"
+            >Introduction to the problem</a
+          >
+        </p>
+        <p>
+          <a class="main-link">Solution vision</a>
+        </p>
+        <p>
+          <a class="main-link">Project requirements</a>
+        </p>
+        <p>
+          <a
+            href="https://symbiota2.org/progress/project-requirements#perform"
+            class="main-link"
+            >Performance requirements</a
+          >
+        </p>
+      </div>
+      <h3 class="heading-tertiary-2">Requirement document - Appendices</h3>
+      <div class="padding-left-big">
+        <p>
+          <a class="main-link">Introduction</a>
+        </p>
+        <p>
+          <a class="main-link">Core pages</a>
+        </p>
+        <p>
+          <a class="main-link">Collection pages</a>
+        </p>
+        <p>
+          <a class="main-link">Occurrence pages</a>
+        </p>
+        <p id="byYear">
+          <a class="main-link">Taxonomy pages</a>
+        </p>
+        <p>
+          <a class="main-link">Image pages</a>
+        </p>
+      </div>
+    </div>
+    <hr class="section-break-light" />
+    <div class="row">
+      <h2 class="heading-tertiary">By year</h2>
+      <h3 class="heading-tertiary-2">Year 3+</h3>
+      <p>
+        Completing essential plugins, some incorporating small changes that
+        address users’ suggestions. Created a requirements document [Link this
+        to pdf of Symbiota2-requirements and associated spreadsheet to summarize
+        progress. Redesigned
+        <a href="https://symbiota2.org" target="_blank" class="main-link"
+          >Symbiota2.org</a
+        >
+        to display progress and enable feedback.
+      </p>
+      <br />
+      <h2 class="heading-tertiary-2">Year 3</h2>
+      <p>
+        Converted to Typescript, Angular, TypeORM, rewriting and documenting
+        core backend components and started creating essential plugins
+        (Collections, Occurrences, Taxonomy, Images).
+      </p>
+      <br />
+      <p>
+        Created 3 websites for following progress, each of which offers a
+        different view. Initiated “Open discussion sessions” for summarizing
+        recent developments and and stimulating discussion. These will help
+        ensure Symbiota2 meets user needs. We cannot promise to incorporate all
+        suggestions before the end of the project, but the feedback will help
+        prioritize our activities while ensuring that other desired features can
+        be added later relatively simply. Information about upcoming sessions is
+        posted to three listservs. People can also ask to be added to the
+        project’s mailing list via the contact page.
+      </p>
+      <br />
+      <h3 class="heading-tertiary-2">Years 1-2</h3>
+      <p id="websites">
+        Refactoring and preparation for acceptance of plugin architecture. These
+        essential tasks were completed within a PHP framework. At the end of
+        that time, review of the project’s objectives combined with a review of
+        new programming languages led to the decision to rewrite the code using
+        <a
+          href="https://www.typescriptlang.org/"
+          target="_blank"
+          class="main-link"
+          >Typescript</a
+        >
+        and
+        <a href="https://angular.io/" target="_blank" class="main-link"
+          >Angular</a
+        >.
+      </p>
+    </div>
+    <hr class="section-break-light" />
+    <div class="row">
+      <h2 class="heading-tertiary">Websites</h2>
+      <div>
+        <p>Progress can now be viewed via three websites:</p>
+        <p class="padding-left-big">
+          <a
+            href="https://demo.symbiota2.org/"
+            target="_blank"
+            class="main-link"
+            >Frontend (user interface) demo.</a
+          ><br /><a
+            href="https://api.demo.symbiota2.org/docs/"
+            target="_blank"
+            class="main-link"
+          >
+            Backend (raw data access) demo.</a
+          ><br /><a
+            href="https://gitlab.com/symbiota2/"
+            target="_blank"
+            class="main-link"
+            >Code</a
+          >
+          (check out the README for developer-centric info).
+          <br /><a
+            href="https://gitlab.com/symbiota2/symbiota2/-/issues"
+            target="_blank"
+            class="main-link"
+          >
+            Issues</a
+          >. (We cannot promise that all the posted issues will be addressed
+          before the project ends, but the list will help determine our
+          priorities.)
+        </p>
+        <br />
+      </div>
+    </div>
+  </main>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+.section-main[_ngcontent-my-app-c48] {
+    background-color: #fff;
+    max-width: 65vw;
+    margin: 14rem auto 10rem auto;
+    z-index: 1;
+    border-top: .7rem solid var(--color-primary-light);
+    border-radius: .5rem;
+    box-shadow: 0 3px 5px 0 rgb(0 1 1 / 10%);
+}

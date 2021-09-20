@@ -1,0 +1,10 @@
+.banner {
+  background-image: url(../../../../../apps/symbiota2/src/assets/img/Bannere1380bywhatever.jpg);
+  height: 40rem;
+  width: 100%;
+  background-position: 50%;
+  background-size: cover;
+}
+.home-container {
+  width: 100%;
+}

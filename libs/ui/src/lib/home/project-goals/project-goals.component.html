@@ -1,0 +1,144 @@
+<div class="section-main padding-top-big padding-bottom-big">
+  <div class="row">
+    <h1 class="heading-secondary text-center">
+      Project Goals and the Creation of Symbiota2
+    </h1>
+    <p class="text-center font-size-mid1">
+      We will transform Symbiota into an improved software platform: Symbiota2.
+      The features requested by the Symbiota community via the forum and are
+      distilled into the following six goals for this development program.
+    </p>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row">
+    <h2 class="heading-tertiary">
+      Goal 1. Provide RESTful (representational state transfer) web services
+    </h2>
+    <p>
+      There is growing demand to use Symbiota in a scientific workflow with
+      other applications, for example as a data provider to the Interior
+      Collections Management System that catalogues and manages all the
+      collections owned by the U.S. Department of the Interior, or as a step in
+      morphological, geographic, and ecological analyses. Symbiota2 will have an
+      expanded API framework and offer a variety of RESTful web services that
+      will enable external applications to efficiently pull data into workflows,
+      export data using specific filters and in specific formats, and import
+      data into the Symbiota2 portal.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Goal 2. Plugin design and deployment</h2>
+    <p>
+      The project team will refactor Symbiota into plugin modules that have
+      cohesive functionality, e.,g., a plugin to upload scientific names from a
+      file. Refactoring Symbiota’s functionality into plugins will create an
+      extensible framework for development. Users will be able to customize
+      Symbiota2 by selecting only desired plugins and creating new plugins as
+      needed. Refactoring will also allow Symbiota to be transformed into
+      Symbiota2 in stages rather than requiring all of the pieces to be in place
+      before Symbiota2 is released.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">
+      Goal 3. Accommodate other Database Management Systems
+    </h2>
+    <p>
+      As biodiversity data collections grow in size, new kinds of data storage
+      and data analyses need to be supported. Symbiota2 will offer a variety of
+      database management system (DBMS) options to store biodiversity data.
+      Symbiota’s data is currently stored in a relational database comprising
+      143 tables managed by a MySQL DBMS. Database operations are spread
+      throughout the code and are specific to MySQL. The project team will
+      create a database abstraction layer and object relational mappings for
+      MySQL, Postgres, SQLite, and Google’s Cloud Spanner
+      <a class="main-link" (click)="scroll('literature-cited', '16')">[16]</a>.
+      This will result in a database abstraction that models the data as a
+      collection of objects and maps each object to a database table. The
+      abstraction layer ensures that all data manipulation and querying is
+      performed by the mapping, encapsulates the DBMS operations in a single
+      place and, importantly, enables other DBMSs to be used by changing the
+      mapping.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Goal 4. Increase Data Utility</h2>
+    <p>
+      Symbiota2 will help scientific researchers analyze and make use of
+      biodiversity data by providing new ways to view the data and creating a
+      framework for running analysis tools. A key part of Symbiota2 will be the
+      ability to develop and integrate tools for analyzing data. Symbiota2 will
+      have an external API (Goal 1) so that tools can pull data, and will also
+      have a plugin architecture (Goal 2) so that tools can be closely
+      integrated. To further increase data utility, we plan to export a
+      Symbiota2 knowledge graph
+      <a class="main-link" (click)="scroll('literature-cited', '30')">[30]</a>.
+      A knowledge graph is a semantically-rich collection of linked data.
+      Ontologies help define and describe the data and create opportunities for
+      semantically linking the data to other graphs. Symbiota2 will leverage
+      taxon ontologies
+      <a class="main-link" (click)="scroll('literature-cited', '59')">[59]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '67')">[67]</a>
+      to export a biodiversity knowledge graph
+      <a class="main-link" (click)="scroll('literature-cited', '46')">[46]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '66')">[66]</a>.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Goal 5. Separate form from function</h2>
+    <p>
+      Symbiota’s Graphical User Interface (GUI) is programmed into many PHP
+      files that also manipulate the data and perform other functions. Many, but
+      not all, style decisions in the GUI are controlled by a collection of
+      Cascading Stylesheets (CSS) rules. By cleanly separating the GUI from the
+      core functionality the code can be reduced in size and complexity, thereby
+      becoming more maintainable and extensible. Model, view, controller (MVC)
+      frameworks (e.g., Ruby on Rails
+      <a class="main-link" (click)="scroll('literature-cited', '54')">[54]</a>)
+      are often used to create such a separation, but Symbiota was developed
+      before their value was recognized
+      <a class="main-link" (click)="scroll('literature-cited', '20')">[20]</a>.
+      Adding an MVC framework to Symbiota will also promote Content Management
+      System (CMS) integration. Customized content has often been challenging to
+      add for Symbiota portal managers with little experience in web
+      development. Many managers have taken the approach of creating a separate
+      site to document their portal, explain workflows for data management, and
+      provide background for their enterprise. A CMS, such as WordPress, makes
+      it relatively easy for non-experts to install, customize, and maintain a
+      web site. By integrating with a CMS, Symbiota2 will gain many CMS
+      features, such as user control over the look-and-feel, support for
+      internationalization, automated update, configurable installation,
+      advanced security (e.g., Wordfence), responsive layout, WYSWIG editing,
+      and social media syndication.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Goal 6. Data Collection Enhancements</h2>
+    <p>
+      Users want the ability to incorporate metadata (e.g., camera EXIF data for
+      images) and new kinds of data into Symbiota, such as monitoring and survey
+      data. In addition, they have asked for the ability to create new data
+      entry/editing forms and data cleaning tools. Symbiota2 will be designed
+      for such extensibility, allowing it to easily accommodate new data types
+      and improve data management. A recurring problem in data collection is
+      that museums in developing countries and remote areas of North America
+      have only intermittent Internet access. To help such users, Symbiota2 will
+      have an offline mode. Data collected offline will be synchronized with a
+      live portal when reconnected to the Internet.
+    </p>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row">
+    <a class="main-link" (click)="scroll('/')">Back to home</a>
+  </div>
+
+  <div class="home-subnav subnav-left">
+    <a (click)="scroll('project-summary')">‹</a>
+    Prev
+  </div>
+
+  <div class="home-subnav subnav-right">
+    Next
+    <a (click)="scroll('project-emergence')">›</a>
+  </div>
+</div>

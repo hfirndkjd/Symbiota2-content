@@ -1,6 +1,10 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Message } from '@symbiota/api-interfaces';
+import { Router } from '@angular/router';
+import { ScrollService } from 'libs/ui/src/lib/scroll.service';
+import { HomeService } from 'libs/ui/src/lib/home.service';
 
 @Component({
   selector: 'symbiota-root',
@@ -9,5 +13,21 @@ import { Message } from '@symbiota/api-interfaces';
 })
 export class AppComponent {
   hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public router: Router,
+    private scrollService: ScrollService,
+    private homeService: HomeService
+  ) {}
+
+  scroll(link: string, fragment: string = '') {
+    this.scrollService.onScroll(link, fragment);
+  }
+  activateHome() {
+    this.homeService.home = true;
+    console.log(
+      'this is home from service inside header:',
+      this.homeService.home
+    );
+  }
 }

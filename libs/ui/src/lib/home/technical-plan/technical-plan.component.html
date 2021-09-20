@@ -1,0 +1,403 @@
+<div class="section-main padding-top-big padding-bottom-big">
+  <div class="row">
+    <h1 class="heading-secondary">Technical Plan</h1>
+    <p class="text-center">
+      Symbiota2’s development will require refactoring, modifying, and extending
+      the code in three broad areas: User Interface, Informatics, and
+      Extensibility. To achieve its goals, the refactoring of Symbiota will
+      emphasize modularity and strictly conform to best practices and current
+      design standards
+      <a class="main-link" (click)="scroll('literature-cited', '32')">[32]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '39')">[39]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '41')">[41]</a>.
+      In this section, we present the high-level conceptual design of Symbiota2,
+      regarding our project goals.
+    </p>
+    <hr class="section-break-light marginLR0" />
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Architecture</h2>
+    <div class="arch-container">
+      <p class="arch-text">
+        Symbiota has a three-tier architecture, as shown in Figure 4, with each
+        tier representing the physical separation of processing and data
+        management. The Data tier, shown in the right of the figure, is a MySQL
+        DBMS. A search engine, Apache SOLR, can also be installed and configured
+        to index the database. Images, typically of specimens, are stored
+        external to the DBMS. The Server tier hosts the Symbiota code base. The
+        Client tier is a web browser. A Client initiates an HTTP call that
+        executes Server-side code. Some executions get data from the DBMS or
+        SOLR. GUI formatting occurs in both the execution of PHP files on the
+        Server and through JavaScript in the Client.
+      </p>
+      <img
+        src="../../../assets/img/figure4.jpg"
+        alt=""
+        class="arch-img img-style2"
+      />
+    </div>
+    <img src="../../../assets/img/Figure5.jpg" alt="" class="img-style1" />
+    <p>
+      In Symbiota2, the architecture will change to that depicted in Figure 5.
+      The Data tier remains largely the same, with one important change;
+      Symbiota2 will interact with the DBMS and SOLR through a Database
+      Abstraction Layer. The layer will map between objects in memory and
+      storage in a supported DBMS (Goal 3). The Server tier will change in three
+      ways: First, we will utilize the Database Abstraction Layer for Data tier
+      calls. Second, the functionality of Symbiota will be repacked into the
+      Symbiota2 API (Goal 1). Third, the data modeling and operations in
+      Symbiota2 will be refactored into a plugin based framework (Goal 2). This
+      refactoring will enable extensibility, allowing processing of new kinds of
+      data to be quickly added (Goal 6). It will also support a CMS, which could
+      be optionally installed to provide improved customization and maintenance
+      of the portal (Goal 5). Clients will interact with Symbiota2 through a web
+      browser or a RESTful web services API. The current look and feel of
+      Symbiota will be accessed through Symbiota2’s native interface included
+      with the software. Symbiota2 will be packaged for installation using
+      Docker
+      <a class="main-link" (click)="scroll('literature-cited', '71')">[71]</a>,
+      making it easier for portal managers to install and update on all major
+      operating systems.
+    </p>
+    <br />
+    <p>
+      We will create much of Symbiota2 through refactoring
+      <a class="main-link" (click)="scroll('literature-cited', '26')">[26]</a>
+      of the Symbiota code. Symbiota modules will be refactored into separate
+      plugins (formatting, design, and functionality) controlled within an
+      AngularJS framework parsed within the client’s browser. All data modeling,
+      processing, and database interactions will occur within the server-side
+      scripts. The client-side framework will interact with the server-side
+      framework through the Symbiota2 API via JSON. Server-side scripts in
+      Symbiota have been developed in PHP. All server-side legacy functionality
+      refactored from Symbiota into Symbiota2 will also be written in PHP (See
+      change implemented in 2020). However, Symbiota2 will also encourage
+      development in other languages.
+    </p>
+    <br /><span class="text-note">
+      Note added in 2021: We have switched to using Typescript and Angular for
+      the code, plus TypeORM for web services. This reduces the number of
+      languages and platforms involved while providing greater flexibility,
+      scalability, and speed. Moreover, it will make it easier for biologists,
+      many of whom now learn languages such as r and Python, to develop plugins
+      for Symbiota2, thereby increasing the number of potential developers (Goal
+      4). Consequently, some of the following paragraphs are no longer relevant. </span
+    ><br />
+    <p>
+      Note that we are working with a large, pre-existing code base written in
+      PHP, which continues to be a popular language for server-side coding. A
+      July 2017 survey estimated that PHP is used to power 82.7% of all websites
+      whose server-side language is known
+      <a class="main-link" (click)="scroll('literature-cited', '69')">[69]</a>.
+      In language popularity surveys, such as the TIOBE index
+      <a class="main-link">[68]</a> and Redmonk’s
+      <a class="main-link" (click)="scroll('literature-cited', '55')">[55]</a>,
+      PHP ranks seventh and fourth, respectively of the many thousands of
+      programming languages. One factor in PHP’s continuing popularity for web
+      development is that PHP is the language for most CMSs including the three
+      most popular: WordPress, Drupal, and Joomla
+      <a class="main-link" (click)="scroll('literature-cited', '17')">[17]</a>.
+      However, other languages are becoming popular for development. Symbiota2
+      will allow for future development of server-side data modeling and
+      processing in various languages by implementing a clean separation between
+      client-side GUI processes and server-side data processes, offering a
+      modular, plugin-based architectural framework, using Oauth2 for security
+      credentials (which Symbiota currently uses), and by passing information
+      internally via JSON.
+    </p>
+    <br />
+    <p>
+      Symbiota2 and its server-side dependencies will be packaged in a Docker
+      image and be available through DockerHub
+      <a class="main-link" (click)="scroll('literature-cited', '22')">[22]</a>
+      so that it can be installed on various platforms. The Docker image will be
+      installed within a Docker container that can be run offline. In offline
+      mode, Symbiota2 will employ a SQLite database to store data. When an
+      Internet connection is available, offline installations of Symbiota2 will
+      be able to connect with an online Symbiota2 portal and sync data that has
+      been either added or edited locally while offline (Goal 6).
+    </p>
+    <br />
+    <p>
+      Symbiota2 will use the same run-time environment as Symbiota; that is, it
+      will use PHP and a DBMS, and optionally a CMS like WordPress on the server
+      side, and JavaScript on the client side. Everything except the CMS is
+      bundled together in web server solutions stacks like XAMPP
+      <a class="main-link">[74]</a>. Such stacks also exist for smart devices,
+      for instance the KSWeb app for Android
+      <a class="main-link" (click)="scroll('literature-cited', '37')">[37]</a>.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">User Interface Plans</h2>
+    <p>
+      Users want to be able to customize the look-and-feel and navigation of
+      Symbiota, and easily add and edit content (Goal 5). Symbiota is
+      challenging to customize, whether adding a Facebook “like” button or
+      adding new content outside of the Symbiota core pages. Additionally, the
+      menu system and navigation is ad hoc, difficult to change, and can be
+      confusing to use, making it hard for users to locate many of the tools
+      within the software. Missing from Symbiota are common navigational aids
+      like site search, breadcrumbs, and customizable menus. Though Symbiota
+      does allow some CSS styling to be customized, Symbiota does not use
+      external CSS for all style decisions, rather it embeds some style choices
+      in the code (e.g., a font must be 10pt). Symbiota also supports limited
+      customization of the layout—only the header, footer, and sidebars can be
+      changed.
+    </p>
+    <br />
+    <p>
+      Symbiota2 will incorporate easier GUI customization and responsiveness in
+      several ways. First, we will use CSS for formatting. Second, we will
+      refactor the Symbiota GUI code into an AngularJS framework, leaving all
+      display decisions occurring in the client-side code while communicating
+      with the server-side data modeling and operations code through JSON. This
+      will provide a much more adaptable GUI that can responsively adjust to
+      mobile devices. Third, we will create a Symbiota2 WordPress plugin to
+      allow for integration with the WordPress CMS. This will leverage the
+      functionality offered by WordPress, which is by far the most popular CMS
+      (used by 36% of CMS backed websites, followed by Drupal with 8%
+      <a class="main-link" (click)="scroll('literature-cited', '17')">[17]</a>),
+      and will offer significant savings in coding effort because many of the
+      features Symbiota users desire, such as a responsive, customizable layout,
+      are already available in WordPress. The plugin will interact with the
+      WordPress Plugin API
+      <a class="main-link" (click)="scroll('literature-cited', '76')">[76]</a>
+      and bridge communication between it and the core Symbiota2 API. This will
+      allow for the AngularJS GUI plugins of Symbiota2 to be routed into the
+      WordPress framework (Goal 2). If there is a community need for another
+      CMS, say Drupal, we will convert the WordPress plugins to that CMS.
+    </p>
+    <br />
+    <p>
+      These changes will improve the user interface and design of Symbiota2, but
+      we also plan to remain compatible with Symbiota’s current user interface
+      by providing a Symbiota2 native interface. The native interface will have
+      the look-and-feel of Symbiota, including its layout, styling, and
+      navigation, but with the added benefit of responsive layout.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Informatics Plans</h2>
+    <p>
+      The core of Symbiota2 will be an API to coordinate communication between
+      the client-side GUI and server-side data processing. These services will
+      also be publicly accessible so that other applications can incorporate
+      them into their visualizations or workflows (Goal 1). All Symbiota2 API
+      endpoints will return JSON responses and the API will be documented using
+      the OpenAPI specification
+      <a class="main-link" (click)="scroll('literature-cited', '60')">[60]</a>.
+    </p>
+    <br />
+    <p>
+      Symbiota uses MySQL to manage data. We will integrate Doctrine
+      <a class="main-link" (click)="scroll('literature-cited', '70')">[70]</a>,
+      a database abstraction layer, into Symbiota2 so that a different DBMS
+      could be used (Goal 3). Doctrine has high-level, DBMS-independent
+      operations to read, update, and query objects. A mapping maps the logical
+      operations on objects into low-level data storage operations for a
+      specific DBMS
+      <a class="main-link" (click)="scroll('literature-cited', '4')">[4]</a>.
+      This project will refactor Symbiota to replace the MySQL calls with
+      Doctrine calls and then use Doctrine’s object-relational mapping (ORM) for
+      MySQL and create mappings for Postgres, SQLite, and Google’s Cloud
+      Spanner. The SQLite mapping is needed for the offline mode (Goal 6)
+      because only SQLite can be run on some devices (such as smart phones).
+      Cloud Spanner is a scalable relational DBMS that may be needed in the
+      future as use of Symbiota2 grows to accommodate 500 million specimens
+      (Goal 4). The Postgres mapping is being created in response to user
+      requests as an alternative to MySQL.
+    </p>
+    <br />
+    <p>
+      We shall also add the ability to synchronize data so that clients without
+      continuous Internet access can use the offline mode to add occurrence
+      records or update a taxon. The database abstraction layer will log each
+      change to an object as a record consisting of the old and the new version
+      of an object represented in JSON, akin to how recovery logs are maintained
+      in relational DBMSs
+      <a class="main-link" (click)="scroll('literature-cited', '43')">[43]</a>.
+      To merge changes, the log will be processed to find matching old versions
+      and update to new versions with manual approval. Non-matching old
+      versions, which we anticipate will be rare, will be placed in a workflow
+      for manual merging. Note that GUIDs or other auto-incremented IDs
+      generated for new versions while in offline mode may have to be updated as
+      part of the merging, so the merging process will need to keep a dictionary
+      of IDs in the log mapped to updated IDs in the data store. We will use a
+      software lock to ensure that only one merge is active at a time.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Extensibility Plans</h2>
+    <p>
+      One of the most frequent user requests is to be able to add new kinds of
+      data to a portal, for instance descriptive information or bibliographic
+      information (Goal 6). To meet this need, we will develop a modular
+      framework for extending Symbiota2. This framework is key to enabling an
+      active developer community to collaborate in code enhancements while
+      maintaining existing functions. The framework will support the development
+      of new plugins, as well as provide updates to existing functions in the
+      form of class extensions (Goal 2). A plugin in the framework will have
+      three key components: 1) a model class defining the structure of an
+      object, 2) methods to clean and manage the object, and 3) templates to
+      visualize and format the object, e.g., as JSON, for use in web services or
+      rendered as HTML. Existing code will be refactored to utilize the
+      framework. This will also allow portal managers to customize each
+      Symbiota2 instance from a selection of plugins.
+    </p>
+    <br />
+    <p>
+      We will use a combination of class auto-loading, code namespaces, and a
+      routing class register to organize run-time plugin management. This class
+      routing registration will allow for development of RESTful web services
+      (Goal 1). This type of modular design will produce a cleaner code base for
+      developer collaborations, faster product development, and assist in
+      simplifying code maintenance, all features that will help sustain a strong
+      product lifespan and data dissemination while supporting cross-domain data
+      fusion applications.
+    </p>
+    <br />
+    <p>
+      The plugin framework will also support new data analytics tools. Symbiota
+      excels at providing data on the distribution of biodiversity and images of
+      specimens, but currently does not support other facets of biodiversity
+      such as phylogenetic diversity or the timing of emergence
+      <a class="main-link" (click)="scroll('literature-cited', '53')">[53]</a>.
+      As part of the development of Symbiota2, we will both fill this key gap
+      and demonstrate the power of the new plugin framework with two new
+      plugins. Critically, these plugins will be developed through a
+      collaboration between our biologist and informatician co-PIs (Pearse and
+      Brandt), who will explore the outputs of the tools during development and
+      use them to develop a series of online research guides that showcase the
+      use of the tools to answer research questions about the distribution of
+      biodiversity throughout North America. The two plugins will provide
+      concrete examples for third-party developers and showcase Symbiota2’s
+      extensible framework.
+    </p>
+    <br />
+    <p>
+      <span class="text-note">
+        Note added 2021: Dunn replaced Brandt in July 2020</span
+      >
+    </p>
+    <br />
+    <h3 class="heading-tertiary-2">Phylogeny plugin</h3>
+    <p>
+      All species are related in their phylogeny, which represents the shared
+      ancestry among species. Phylogeny is useful as a way to organize and
+      classify species (a species’ taxonomy is produced from its position in a
+      phylogeny), and also to understand the function of species and how
+      productive or stable an ecosystem will be
+      <a class="main-link" (click)="scroll('literature-cited', '14')">[14]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '25')">[25]</a>.
+      We will develop a plugin, by adapting and reusing R code we wrote
+      <a class="main-link" (click)="scroll('literature-cited', '48')">[48]</a>,
+      that will allow users to download a phylogeny of the species whose records
+      they are exploring, and to calculate and visualize the phylogenetic
+      diversity of a given region (e.g., Figure 6).
+    </p>
+    <img
+      src="../../../assets/img/Figure6.jpg"
+      alt="Figure 6"
+      class="img-style1"
+    />
+    <h3 class="heading-tertiary-2">Phenology plugin</h3>
+    <p>
+      Climate and land-use change is not just altering the distribution of
+      species, but also the timing of their life-history events
+      <a class="main-link" (click)="scroll('literature-cited', '42')">[42]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '47')">[47]</a>,
+      and there is an emerging eco-informatics need to serve users with
+      phenological data to support their research. Building on a novel
+      statistical framework that enables the estimation of the timing of events
+      (e.g., plant flowering, insect emergence, and bird migrations) from
+      observation data
+      <a class="main-link" (click)="scroll('literature-cited', '49')">[49]</a>,
+      we will develop a plugin that will inform the user, based on records
+      within Symbiota2, when the species within a given area are likely to be
+      active. This will not just support research into changes in phenology
+      through time and space, but also help the general public identify species
+      by excluding species not currently active or in bloom at the time of their
+      visit to a region.
+    </p>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">
+      Standards, Testing, Evaluation, and Transitioning to Symbiota2
+    </h2>
+    <p>
+      Symbiota2 will follow the best practices and current standards in
+      community-driven, open-source software engineering, including
+      version-controlled source code and test data using GitHub; providing
+      thorough documentation that is continuously tested; extensive unit and
+      integration testing through a maintained testing framework using PHPUnit
+      <a class="main-link" (click)="scroll('literature-cited', '52')">[52]</a>
+      and Jasmine
+      <a class="main-link" (click)="scroll('literature-cited', '35')">[35]</a>;
+      and strict adherence to coding style standards with code linting. The
+      Symbiota2 API will be extensively documented using the OpenAPI
+      specification. Symbiota2 will strictly adhere to the PHP PSR
+      <a class="main-link" (click)="scroll('literature-cited', '50')">[50]</a>
+      and the AngularJS Style Guide
+      <a class="main-link" (click)="scroll('literature-cited', '6')">[6]</a>
+      coding standards. These community standards detail how code should be
+      written and will ensure that the coding style will be consistent
+      throughout the code base, helping to make it more understandable for a
+      large development team and accessible to new contributors with minimal
+      effort.
+    </p>
+    <br />
+    <p>
+      We will create an automated testing suite for the Symbiota2 API using
+      PHPUnit. This will be used to test all additions and modifications to the
+      API. To ensure stability, we will enact a stability cycle policy that we
+      will post on the Symbiota2 GitHub wiki. The policy will specify that all
+      modifications to the API will be thoroughly tested before being determined
+      as stable and going into production. Once stable developments have been
+      released, any functionality that will be lost due to backwards
+      incompatible modifications to the API will be flagged as deprecated for a
+      three-month period before the change goes into production to give
+      Symbiota2 developers and other API users confidence in developing using
+      the API.
+    </p>
+    <br />
+    <p>
+      The plugin framework (Goal 2) will enable us to adopt a “piecemeal”
+      approach to transitioning the code base from Symbiota to Symbiota2 whereby
+      we will first create the plugin framework and then refactor Symbiota code
+      into modules to plugin to the framework. Un-refactored, legacy Symbiota
+      code will be retained for backwards-compatibility as new modules come
+      online. Hence a portal will be able to transition smoothly from Symbiota
+      to Symbiota2 at any point in the development of Symbiota2 with no loss of
+      functionality and continued use of the legacy interface, and with new
+      (simpler) installation and update methods using Docker.
+    </p>
+    <br />
+    <p>
+      We will periodically re-evaluate Symbiota2 using PHPMetrics. This will
+      provide an independent measure of our coding efforts and help to pinpoint
+      areas in the code where the refactoring needs to be further improved. We
+      expect to see a steady improvement in the software metrics. A second
+      dimension of evaluation is comparing the performance of Symbiota2 to
+      Symbiota for a suite of benchmark activities (e.g., insert 1000 occurrence
+      records). While we do not anticipate that our transformation of Symbiota
+      into Symbiota2 will degrade performance, the comparison will help to
+      isolate and mitigate cases of poor performance. For instance, if when
+      adding a database abstraction layer using Doctrine, we observe degraded
+      performance, we can do further testing to determine why and explore
+      implementation alternatives.
+    </p>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row">
+    <a (click)="scroll('/')" class="main-link">Back to home</a>
+  </div>
+</div>
+<div class="home-subnav subnav-left">
+  <a (click)="scroll('project-emergence')">‹</a>
+  Prev
+</div>
+<div class="home-subnav subnav-right">
+  Next
+  <a (click)="scroll('product-availability')">›</a>
+</div>

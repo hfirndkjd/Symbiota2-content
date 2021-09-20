@@ -1,0 +1,91 @@
+<div class="section-main padding-top-big padding-bottom-big">
+  <div class="row">
+    <h1 class="heading-secondary margin-bottom-mid">Solution vision</h1>
+    <p>
+      Symbiota needs a fundamental restructuring in order to ensure
+      maintainability and the development of new features. The transformation of
+      Symbiota into Symbiota2 is completely refactoring the codebase,
+      emphasizing modularity in order to improve usability and accessibility.
+    </p>
+    <br />
+    <p>
+      Modern web development practices involve splitting a web application into
+      an Application Programmer interface (API) and a User Interface (UI), in a
+      practice known as the Representational State Transfer, or RESTful,
+      architecture<sup><a class="main-link">4</a></sup
+      >. The UI is a presentation layer, displaying data to the user. The API
+      handles business logic, sending and receiving data to and from the UI when
+      requested. Splitting Symbiota2 into an API and UI will improve modularity.
+      New UI features will be developed independently of things like database
+      access or data processing, and API logic will be independent of the
+      presentation layer. Splitting the API and UI also allows for more granular
+      horizontal scaling<sup><a class="main-link">5</a></sup
+      >, another modern web development practice that allows for better
+      performance.
+    </p>
+    <br />
+    <p>
+      Symbiota2 will be further modularized by utilizing a plugin architecture.
+      This architecture specifies a small, extremely stable core application
+      that is closed for modification, but open for extension by “plugging-in”
+      new modules. This architecture will allow for user features to be toggled
+      on and off, and for developers to contribute new functionality without
+      having to contribute to the core Symbiota2 codebase.
+    </p>
+    <br />
+    <p>
+      Many modern web development platforms come with modularization
+      functionality out of the box. Angular, a frontend platform originally
+      developed by Google, will be used to build the UI for Symbiota2. NestJS is
+      a backend platform modeled around the same design principles as Angular
+      and is a logical choice for the API. Both frameworks are written in
+      Typescript, have support for building modular “libraries”, and can be
+      organized within a single, full-stack monorepository utilizing a tool
+      called Nx.
+    </p>
+    <br />
+    <p id="bottom-link">
+      Building modularity into Symbiota2 will improve the speed with which new
+      features can be added and ensure maintainability and accessibility. A
+      plugin architecture will allow contributors to develop content without
+      having to read through inapplicable code. A single, modern web development
+      language like Typescript will provide for better code quality and a lower
+      barrier for entry. These improvements, taken together, will greatly
+      improve the efficacy of sharing biodiversity data within the scientific
+      community.
+    </p>
+  </div>
+  <div class="row">
+    <hr class="section-break-light marginLR0" />
+    <p>
+      <sup style="margin-right: 0.5rem">4</sup
+      ><a
+        href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"
+        target="_blank"
+        class="main-link"
+        >https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm</a
+      >
+    </p>
+    <p>
+      <sup style="margin-right: 0.5rem">5</sup
+      ><a
+        href="https://12factor.net/concurrency"
+        target="_blank"
+        class="main-link"
+        >https://12factor.net/concurrency</a
+      >
+    </p>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row">
+    <a (click)="scroll('/')" class="main-link">Back to home</a>
+  </div>
+</div>
+<div class="home-subnav subnav-left">
+  <a (click)="scroll('progress/introduction-problem')">‹</a>
+  Prev
+</div>
+<div class="home-subnav subnav-right">
+  Next
+  <a (click)="scroll('progress/project-requirements')">›</a>
+</div>

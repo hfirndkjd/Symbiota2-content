@@ -1,0 +1,55 @@
+.section-main {
+  background-color: #fff;
+  max-width: 65vw;
+  margin: 14rem auto 10rem auto;
+  z-index: 1;
+  border-top: 0.7rem solid var(--color-primary-light);
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 5px 0 rgb(0 1 1 / 10%);
+}
+
+.contact-form {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.contact-form,
+p {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.contact-form,
+p {
+  width: 95%;
+  margin: 0 auto;
+}
+input,
+textarea {
+  outline: none;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: var(--color-text-light-2);
+  border-radius: 0.6rem;
+  font-size: 1.6rem;
+  color: var(--color-text-dark-1);
+  font-family: inherit;
+  background-color: var(--color-text-light-2);
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid #ff4b4b;
+}
+.btn-contact__container {
+  display: flex;
+  justify-content: flex-start;
+}
+.btn-contact {
+  background-color: var(--color-primary-light);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.7rem;
+  transition: all 0.2s ease;
+}

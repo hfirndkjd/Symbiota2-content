@@ -1,0 +1,323 @@
+<div class="section-main padding-top-big padding-bottom-big">
+  <div class="row">
+    <h1 class="heading-secondary">
+      Product Availability and Ongoing Development
+    </h1>
+    <p>
+      The project will span three years [now in a one year no-cost extension] at
+      two universities, Utah State University (USU) and Northern Arizona
+      University (NAU), and involve 55 person-months of programming. The primary
+      tasks in the project are listed in Table 1. Major tasks are broken down
+      into subtasks. The first three columns are programming effort by year, the
+      next two columns by university. The shading represents the amount of
+      programmer effort; light shading corresponds to 0.5-1 month of programmer
+      effort while progressively darker shades indicate greater effort. The
+      subtasks are tied to project goals as described in Section
+      <a href="#" class="main-link">D.2</a>. The table summarizes a more
+      detailed plan (not included in the project description for brevity) that
+      we have developed.
+    </p>
+    <br />
+    <p>
+      The universities will work cooperatively but take the lead in different
+      areas. USU will be primarily responsible for the data abstraction. This
+      includes mappings to Postgres, etc. as well as creating the data logger
+      and schema additions to support new kinds of data. USU will also code a
+      data migration tool to port data from MySQL to the other kinds of
+      databases. USU will also develop the offline mode and data sync tool. PIs
+      at NAU will lead the effort on refactoring, plugin development, and
+      RESTful web services. NAU will also create and maintain a developer forum
+      to encourage developers in the community to participate in the project and
+      set up and maintain the code repository. Table 1 also lists
+      community-building tasks not associated with specific project goals such
+      as project maintenance and education. These tasks are part of our
+      dissemination strategy in providing thorough instruction and documentation
+      in using and building upon Symbiota2, in addition to providing
+      deliverables. Deliverables will be provided by, or linked to, the
+      Symbiota.org web site. [<span class="text-note"
+        >Change 2021: to the Symbiota2 website</span
+      >].
+    </p>
+    <br />
+    <table class="table">
+      <tr>
+        <td colspan="8" class="tb1">
+          <strong>Table 1</strong>. Project tasks showing timeline and relative
+          effort by each institution. The shading of each cell reflects the
+          number of person months dedicated to a particular task.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-bold">Task</td>
+        <td colspan="3" class="text-bold">Year</td>
+        <td colspan="2" class="text-bold">Place</td>
+        <td>Goals</td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3*</td>
+        <td>USU</td>
+        <td>NAU</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="8" class="text-bold text-left">Refactoring</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Refactor GUI/CSS</td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="background-color: #ebebeb"></td>
+        <td>Goal 5</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>AngularJS GUI</td>
+        <td></td>
+        <td style="background-color: #999"></td>
+        <td style="background-color: #999"></td>
+        <td></td>
+        <td style="background-color: #333"></td>
+        <td>Goal 5</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Refactor base code</td>
+        <td></td>
+        <td style="background-color: #999"></td>
+        <td style="background-color: #999"></td>
+        <td></td>
+        <td style="background-color: #333"></td>
+        <td>Goal 2</td>
+      </tr>
+      <tr>
+        <td colspan="8" class="text-bold text-left">Toolkit and framework</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Plugin framework</td>
+        <td style="background-color: #999"></td>
+        <td></td>
+        <td></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #999"></td>
+        <td>Goal 2</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>RESTful services API</td>
+        <td style="background-color: #999"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #999"></td>
+        <td></td>
+        <td style="background-color: #333"></td>
+        <td>Goal 1</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Phylogeny/phenology plugins</td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="background-color: #333"></td>
+        <td>Goal 4</td>
+      </tr>
+      <tr>
+        <td colspan="8" class="text-bold text-left">Data management</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>DBMS Module (SQLIte, etc.)</td>
+        <td style="background-color: #999"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td style="background-color: #333"></td>
+        <td></td>
+        <td>Goal 3</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Schema additions</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #999"></td>
+        <td></td>
+        <td>Goal 6</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Symbiota2 Knowledge Graph</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #999"></td>
+        <td></td>
+        <td>Goal 4</td>
+      </tr>
+      <tr>
+        <td colspan="8" class="text-bold text-left">Wordpress integration</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Create WP Plugins</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #999"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td style="background-color: #333"></td>
+        <td>Goal 2</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Theming/styling tutorial</td>
+        <td></td>
+        <td></td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td style="background-color: #ebebeb"></td>
+        <td>Goal 5</td>
+      </tr>
+      <tr>
+        <td colspan="8" class="text-bold text-left">Data enhancements</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Offline mode and sync tool</td>
+        <td></td>
+        <td></td>
+        <td colspan="2" style="background-color: #333"></td>
+        <td></td>
+        <td>Goal 6</td>
+      </tr>
+      <tr>
+        <td colspan="8" class="text-bold text-left">Developer community</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Testing</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td>All Goals</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Setup/maintain Docker</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td style="background-color: #999"></td>
+        <td>All Goals</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Setup/maintain forum</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td style="background-color: #999"></td>
+        <td>All Goals</td>
+      </tr>
+      <tr>
+        <td class="tbL"></td>
+        <td>Developer tutorials</td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td style="background-color: #ebebeb"></td>
+        <td></td>
+        <td style="background-color: #999"></td>
+        <td class="tbR">All Goals</td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <h2 class="heading-tertiary">Ongoing Symbiota Development</h2>
+    <p>
+      This will be based on end-user requests via GitHub or through a google
+      user forum
+      <a class="main-link" (click)="scroll('literature-cited', '61')">[61]</a>.
+      Symbiota code is constantly being improved incrementally with funding from
+      NSF, BLM, NPS, USDA pending NEH support, and individual universities. The
+      following larger projects underscore our commitment to improving Symbiota
+      and extending biodiversity informatics capacity in ways that complement
+      the proposed Symbiota2 project.
+    </p>
+    <br />
+    <h3 class="heading-tertiary-2">Spatial Module</h3>
+    <p>
+      This module was developed in collaboration with the Atlas of Living
+      Australia
+      <a class="main-link" (click)="scroll('literature-cited', '5')">[5]</a>, to
+      support advanced geospatial analyses in a Symbiota portal. The module
+      provides the ability to add political, environmental, and geological
+      layers to a map of occurrence records, calculate phylogenetic diversity of
+      a selected area, provide classification analysis between occurrence data
+      and selected map layers, and integrate research products from other
+      programs (Figure 7) to predict present suitable habitat as well as
+      forecast (climate change)
+      <a class="main-link" (click)="scroll('literature-cited', '11')">[11]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '12')">[12]</a
+      ><a class="main-link" (click)="scroll('literature-cited', '13')">[13]</a>
+      and hindcast (paleo) suitable habitat.
+    </p>
+    <img src="assets/img/Figure7.jpg" alt="" class="img-style1" />
+    <h3 class="heading-tertiary-2">
+      Computer-Aided Identification – Citizen Science
+    </h3>
+    <p>
+      In our recent NSF-ADBC LepNet TCN (Cobb, lead PI), we have partnered with
+      FieldGuide
+      <a class="main-link" (click)="scroll('literature-cited', '23')">[23]</a>
+      to develop mobile apps (e.g., LepSnap) to process specimen images using
+      computer-aided identification algorithms, obtain species-level
+      identifications, and harvest image and identifications through the LepNet
+      Symbiota portal. LepSnap is also being used for citizen science users to
+      image live specimens in the field with the option of sharing images with
+      iNaturalist
+      <a class="main-link" (click)="scroll('literature-cited', '34')">[34]</a>.
+      We are developing capacity to filter images through distribution ranges
+      and growing season to increase the ability to distinguish similar-looking
+      species. We are also creating a specimen-based learning hub within the
+      LepNet Symbiota portal that will include learning tools that integrate
+      computer-aided identification into units for educators and teachers to use
+      within their curricula in the LepXPLOR project.
+    </p>
+    <br />
+    <h3 class="heading-tertiary-2">Ethnobiological Studies</h3>
+    <p>
+      This interdisciplinary collaboration with Jonathan Amith enables
+      integrating, discovering, sharing, and exporting ethnobiological data. It
+      will develop a Darwin Core extension to accommodate ethnobiological data
+      and integrate that extension into Symbiota to organize information
+      important in understanding the cultural history of native societies; and
+      will establish the basis for ongoing collaboration among a diverse set of
+      stakeholders: (a) linguists and anthropologists; (b) native communities
+      and scholars; and (c) biologists and herbaria or museum collections
+      (pending NEH funding).
+    </p>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row">
+    <a (click)="scroll('/')" class="main-link">Back to home</a>
+  </div>
+</div>
+<div class="home-subnav subnav-left">
+  <a (click)="scroll('technical-plan')">‹</a>
+  Prev
+</div>
+<div class="home-subnav subnav-right">
+  Next
+  <a (click)="scroll('project-management')">›</a>
+</div>
+>

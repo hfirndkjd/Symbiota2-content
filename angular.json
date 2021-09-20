@@ -66,6 +66,50 @@
         }
       }
     },
+    "backend": {
+      "root": "libs/backend",
+      "sourceRoot": "libs/backend/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/backend/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/backend"],
+          "options": {
+            "jestConfig": "libs/backend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "email": {
+      "root": "libs/email",
+      "sourceRoot": "libs/email/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/email/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/email"],
+          "options": {
+            "jestConfig": "libs/email/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "symbiota2": {
       "projectType": "application",
       "root": "apps/symbiota2",
@@ -184,6 +228,50 @@
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/symbiota2-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "symbiota",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui"],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
+          }
+        }
+      }
+    },
+    "user": {
+      "root": "libs/user",
+      "sourceRoot": "libs/user/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/user/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/user"],
+          "options": {
+            "jestConfig": "libs/user/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

@@ -33,12 +33,22 @@
     "api-interfaces": {
       "tags": []
     },
+    "backend": {},
+    "email": {
+      "tags": []
+    },
     "symbiota2": {
       "tags": []
     },
     "symbiota2-e2e": {
       "tags": [],
       "implicitDependencies": ["symbiota2"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "user": {
+      "tags": []
     }
   }
 }

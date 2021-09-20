@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@symbiota/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@symbiota/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@symbiota/backend": ["libs/backend/src/index.ts"],
+      "@symbiota/email": ["libs/email/src/index.ts"],
+      "@symbiota/ui": ["libs/ui/src/index.ts"],
+      "@symbiota/user": ["libs/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

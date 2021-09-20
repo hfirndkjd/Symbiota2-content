@@ -1,0 +1,311 @@
+<div class="section-main padding-top-big padding-bottom-big">
+  <div class="row project-requirements-page">
+    <h1 class="heading-secondary margin-bottom-mid">
+      Project requirements<sup><a class="main-link">6</a></sup>
+    </h1>
+    <h2 class="heading-tertiary">Functionality requirements</h2>
+    <p class="margin-bottom-big">
+      The primary functional requirement of Symbiota2 is to be an upgrade of
+      Symbiota. As a result, the functional requirements of Symbiota2 revolve
+      around re-implementing all functionality that users would expect from
+      Symbiota.
+    </p>
+    <ul>
+      <li class="display-block">
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+    "
+          ></use></svg
+        ><span
+          >I. &nbsp;&nbsp;<strong>Symbiota2 Core</strong>
+          - Responsible for configuring Symbiota2, authenticating/authorizing
+          users, and enabling/disabling plugins
+        </span>
+        <ul>
+          <li style="display: block !important">
+            <span>A. &nbsp;&nbsp;<strong>API core</strong></span
+            ><span class="nested-span">
+              1. &nbsp;&nbsp;An configuration module for reading portal-wide API
+              configuration data from environment variables<sup
+                ><a class="main-link">7</a></sup
+              ></span
+            ><span class="nested-span"
+              >2. &nbsp;&nbsp;An authentication module for authenticating and
+              authorizing user requests</span
+            ><span class="nested-span"
+              >3. &nbsp;&nbsp;A user module for adding and removing application
+              users</span
+            ><span class="nested-span"
+              >4. &nbsp;&nbsp;A plugin management module for enabling/disabling
+              official and 3rd party plugins for the Symbiota2 API</span
+            ><span class="nested-span"
+              >5. &nbsp;&nbsp;A database module for fetching/updating the
+              Symbiota2 backing database</span
+            >
+          </li>
+          <li>
+            <span
+              >B. &nbsp;&nbsp;<strong>UI Core</strong
+              ><sup><a class="main-link">8</a></sup></span
+            ><span class="nested-span"
+              >1. &nbsp;&nbsp;A configuration module for reading portal-wide UI
+              configuration data from environment variables</span
+            ><span class="nested-span"
+              >2. &nbsp;&nbsp;A user module
+              <span class="nested-span">a) Displaying login screens</span
+              ><span class="nested-span"
+                >b) Fetching/updating user data from the API</span
+              ><span class="nested-span"
+                >c) Editing user permissions for portal administrators
+                (‘SuperAdmins’)</span
+              ></span
+            ><span class="nested-span"
+              >3. &nbsp;&nbsp;A translation module for handling
+              internationalization</span
+            ><span class="nested-span"
+              >4. &nbsp;&nbsp;A plugin management module for enabling/disabling
+              official and 3rd party plugins for the Symbiota2 UI
+            </span>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+    "
+          ></use></svg
+        ><span
+          >II. &nbsp;&nbsp;<strong>Symbiota2 Collection plugin</strong>
+          - Responsible for defining and manipulating collections of specimen
+          records
+        </span>
+        <ul>
+          <li>
+            <span
+              >A. &nbsp;&nbsp;<strong>UI Collection plugin</strong>: All pages
+              in <a class="main-link">Appendix B</a></span
+            >
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span
+              >B. &nbsp;&nbsp;<strong>API Collection plugin</strong>: Data
+              manipulation for all pages in
+              <a class="main-link">Appendix B</a></span
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+    "
+          ></use></svg
+        ><span
+          >III. &nbsp;&nbsp;<strong>Symbiota2 Occurrence plugin</strong>
+          - Responsible for defining and manipulating specimen records
+        </span>
+        <ul>
+          <li>
+            <span
+              >A. &nbsp;&nbsp;<strong>UI Occurrence plugin</strong>: All pages
+              in <a class="main-link">Appendix C</a></span
+            >
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span
+              >B. &nbsp;&nbsp;<strong>API Collection plugin</strong>: Data
+              manipulation for all pages in
+              <a class="main-link"> Appendix C</a></span
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+    "
+          ></use></svg
+        ><span
+          >IV. &nbsp;&nbsp;<strong>Symbiota2 Taxa Plugin</strong>
+          - Responsible for defining and manipulating groups of organisms
+          considered by taxonomists to form a homogeneous unit9
+        </span>
+        <ul>
+          <li>
+            <span
+              >A. &nbsp;&nbsp;<strong>UI Taxa plugin</strong>: All pages in
+              <a class="main-link">Appendix D</a></span
+            >
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span
+              >B. &nbsp;&nbsp;<strong>API Taxa plugin</strong>: Data
+              manipulation for all pages in
+              <a class="main-link">Appendix D</a></span
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+    "
+          ></use></svg
+        ><span
+          >V. &nbsp;&nbsp;<strong>Symbiota2 Image Plugin</strong>
+          - Responsible for defining and manipulating images for specimens
+        </span>
+        <ul>
+          <li>
+            <span
+              >A. &nbsp;&nbsp;<strong>UI Image Plugin</strong>: All pages in
+              <a class="main-link">Appendix E</a></span
+            >
+          </li>
+        </ul>
+        <ul id="perform">
+          <li>
+            <span
+              >B. &nbsp;&nbsp;<strong>API Collection plugin</strong>: Data
+              manipulation for all pages in
+              <a class="main-link">Appendix C</a></span
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row project-performance-page">
+    <h2 class="heading-secondary">Performance requirements</h2>
+    <p class="margin-bottom-big">
+      Symbiota2 is designed to implement modern web development practices in the
+      context of the existing functionality for Symbiota. The Performance
+      Requirements define how Symbiota2 improves upon the user experience for
+      the expected functionality.
+    </p>
+    <ul>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+      "
+          ></use></svg
+        ><span>Performance</span>
+        <ul>
+          <li>
+            <span class="nested-span"
+              >○ &nbsp;&nbsp;All UI data fetching must be asynchronous</span
+            >
+          </li>
+          <li>
+            <span class="nested-span"
+              >○ &nbsp;&nbsp;Long-running data manipulation must be done in a
+              background process</span
+            >
+          </li>
+          <li>
+            <span class="nested-span"
+              >○ &nbsp;&nbsp;Users should be notified of backend crashes with a
+              human-readable message that can be shared with site
+              administrators</span
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+          "
+          ></use></svg
+        ><span>Useability</span>
+        <ul>
+          <li>
+            <span class="nested-span"
+              >○ &nbsp;&nbsp;All configuration must be stored:</span
+            ><span class="nested-span"
+              >○ &nbsp;&nbsp;Migration from a Symbiota database must be done in
+              a single command</span
+            ><span class="nested-span"
+              >○ &nbsp;&nbsp;Installation / migration documentation must be
+              developed
+            </span>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <svg class="list__icon">
+          <use
+            xlink:href="assets/img/sprite.svg#icon-chevron-right
+              "
+          ></use></svg
+        ><span>Maintainability</span>
+        <ul>
+          <li>
+            <span class="nested-span"
+              >○ &nbsp;&nbsp;All code must be written in Typescript</span
+            ><span class="nested-span"
+              >○ &nbsp;&nbsp;All functions and classes must have doctrings
+              explaining their functionality</span
+            ><span class="nested-span"
+              >○ &nbsp;&nbsp;All core modules and plugins must have unit
+              tests</span
+            ><span id="bottom-link" class="nested-span"
+              >○ &nbsp;&nbsp;The API and UI modules must have integration
+              tests</span
+            ><span class="nested-span"
+              >○ &nbsp;&nbsp;Each core module and plugin must have a README
+              explaining its functionality</span
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <hr class="section-break-light" />
+  <div class="row">
+    <p>
+      <span class="text-note"
+        ><sup>6</sup>&nbsp;A “module” refers to an Angular or NestJS library
+        utilized by the core Symbiota2 app, while a “plugin” refers to an
+        Angular or NestJS library that comprises a Symbiota2 plugin.</span
+      ><br /><span class="text-note"
+        ><sup>7</sup>&nbsp;<a href="" target="_blank" class="main-link"
+          >https://12factor.net/config</a
+        ></span
+      ><br /><span class="text-note"
+        ><sup>8</sup>&nbsp; See <a class="main-link"> Appendix A</a></span
+      ><br /><span class="text-note"
+        ><sup>9</sup>&nbsp;<a href="" target="_blank" class="main-link"
+          >https://dwc.tdwg.org/terms/#taxon</a
+        ></span
+      >
+    </p>
+  </div>
+  <p></p>
+  <hr class="section-break-small-light" />
+  <div class="row">
+    <a (click)="scroll('/')" class="main-link">Back to home</a>
+  </div>
+</div>
+<div class="home-subnav subnav-left">
+  <a (click)="scroll('progress/solution-vision')">‹</a>
+  Prev
+</div>
+<div class="home-subnav subnav-right">
+  Next
+  <a (click)="scroll('progress/introduction-appendices')">›</a>
+</div>
+>

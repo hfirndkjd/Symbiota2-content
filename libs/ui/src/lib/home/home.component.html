@@ -1,0 +1,84 @@
+<div class="home-container" *ngIf="home; else router">
+  <div class="banner" style="margin-top: 7.7rem"></div>
+  <main class="section-main-home">
+    <h1 class="heading-primary">Symbiota2</h1>
+    <p class="text-justify">
+      This site provides information about the Symbiota2 NSF-ABI project.
+      Symbiota2 will make it easier to modify and enhance Symbiota. What is
+      Symbiota? It is open source software that has mobilized over 50 million
+      specimen records from over 800 natural history collections, integrated
+      their data with other resources, and shared the resulting information in
+      ways that appeal to multiple user groups. Symbiota’s success stems from
+      its low learning curve, powerful tools, and ability to integrate specimen
+      records other resources such as images and detailed taxonomic descriptions
+      and display them in ways that appeal to multiple user groups. Its success
+      has resulted in many requests for additional abilities, but this is
+      difficult because of the structure of its code. The Symbiota2 project
+      involves restructuring of Symbiota’s code, transforming it in ways that
+      will catalyze contributions, expand research use, enrich education and
+      outreach activities, and increase sustainability.
+    </p>
+    <br />
+    <p class="text-justify" id="proposal">
+      Symbiota2’s first task was to refactor the code to increase its modularity
+      in ways that would enable improving its usability and accessibility by
+      adopting a plugin architecture. The current focus is on the plugins needed
+      to provide Symbiota’s existing abilities, with some improvements, while
+      maintain backwards compatibility. Initial improvements include giving
+      network administrators the flexibility to incorporate additional
+      DarwinCore fields and increasing the accuracy of data entry via minor
+      modifications to the data entry page.
+    </p>
+    <hr class="section-break marginLR0" />
+    <h2 class="heading-secondary text-left">The proposal</h2>
+    <p class="text-left">
+      The links below are to sections of the original proposal. One major change
+      has been made: Symbiota2 is being written using a combination of
+      Typescript and Angular. This combination will provide greater flexibility,
+      speed, scalability than is possible with PHP. Their use will also make
+      contributing to Symbiota2 more appealing to younger, biologically oriented
+      programmers, thereby enhancing Symbiota2’s sustainability and potential.
+    </p>
+    <div class="padding-left-big padding-top-mid">
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('project-summary')"
+          >Project summary</a
+        >
+      </p>
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('project-goals')"
+          >Project goals and the creation of Symbiota2</a
+        >
+      </p>
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('project-emergence')"
+          >Emergence of Symbiota and current needs</a
+        >
+      </p>
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('technical-plan')"
+          >Technical plan</a
+        >
+      </p>
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('product-availability')"
+          >Product availability and ongoing development</a
+        >
+      </p>
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('project-management')"
+          >Project management-training-outreach-sustainability</a
+        >
+      </p>
+      <p class="text-left">
+        <a class="main-link" (click)="onScroll('literature-cited')"
+          >Literature cited</a
+        >
+      </p>
+    </div>
+  </main>
+</div>
+
+<ng-template #router>
+  <router-outlet></router-outlet>
+</ng-template>
