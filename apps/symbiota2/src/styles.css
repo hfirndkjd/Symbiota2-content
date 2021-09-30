@@ -304,6 +304,7 @@ html {
   font-size: 1.65rem;
   padding-bottom: 0.5rem;
   cursor: pointer;
+  text-decoration: none !important;
 }
 .main-link:hover:after {
   width: 100%;
@@ -376,9 +377,25 @@ a:visited {
   box-shadow: 0 0.2rem 0.4rem rgb(0 0 0 / 20%);
 }
 
+a:link,
+a:hover {
+  text-decoration: none !important;
+}
+
 /* section breaks */
 .section-break-light {
   border: 0;
   border-bottom: 2px solid var(--color-text-light-3);
   margin: 3rem 4rem;
+}
+
+.dashboard-active {
+  transform: translateX(1.5rem) !important;
+  transition: all 0.8s ease;
+}
+
+.dashboard-active > a.nav-link {
+  color: rgb(2, 122, 2) !important;
+  font-weight: bold !important;
+  transition: all 0.8s ease;
 }

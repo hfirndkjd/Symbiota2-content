@@ -5,6 +5,7 @@ import { Message } from '@symbiota/api-interfaces';
 import { Router } from '@angular/router';
 import { ScrollService } from 'libs/ui/src/lib/scroll.service';
 import { HomeService } from 'libs/ui/src/lib/home.service';
+import { AuthService } from 'libs/ui/src/lib/services/auth.service';
 
 @Component({
   selector: 'symbiota-root',
@@ -17,10 +18,14 @@ export class AppComponent {
     private http: HttpClient,
     public router: Router,
     private scrollService: ScrollService,
-    private homeService: HomeService
+    private homeService: HomeService,
+    private authService: AuthService
   ) {}
 
   scroll(link: string, fragment: string = '') {
+    if (link === 'login') {
+      this.logout();
+    }
     this.scrollService.onScroll(link, fragment);
   }
   activateHome() {
@@ -29,5 +34,9 @@ export class AppComponent {
       'this is home from service inside header:',
       this.homeService.home
     );
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe(() => console.log('success'));
   }
 }

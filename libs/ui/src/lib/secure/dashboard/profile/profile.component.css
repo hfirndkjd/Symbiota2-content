@@ -1,0 +1,18 @@
+.custom-style {
+  padding-top: 10rem;
+}
+
+.profile-form .btn {
+  padding: 0.5rem 3rem;
+  background-color: #117451;
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 0.3rem;
+}
+
+.profile-form input {
+  height: 3.4rem;
+  border-radius: 0.3rem;
+  width: 80%;
+}

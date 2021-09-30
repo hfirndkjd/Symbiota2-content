@@ -30,11 +30,35 @@
     "api": {
       "tags": []
     },
+    "api-auth": {
+      "tags": []
+    },
+    "api-common": {
+      "tags": []
+    },
+    "api-email": {
+      "tags": []
+    },
     "api-interfaces": {
       "tags": []
     },
+    "api-permission": {
+      "tags": []
+    },
+    "api-role": {
+      "tags": []
+    },
+    "api-user": {
+      "tags": []
+    },
     "backend": {},
+    "common": {
+      "tags": []
+    },
     "email": {
+      "tags": []
+    },
+    "role": {
       "tags": []
     },
     "symbiota2": {

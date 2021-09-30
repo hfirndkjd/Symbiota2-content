@@ -1,35 +1,54 @@
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './home/home.component';
-import { ProgressComponent } from './progress/progress.component';
-import { InteractionsComponent } from './interactions/interactions.component';
-import { HelpPagesComponent } from './help-pages/help-pages.component';
-import { ContactComponent } from './contact/contact.component';
-import { ProjectSummaryComponent } from './home/project-summary/project-summary.component';
-import { ProjectGoalsComponent } from './home/project-goals/project-goals.component';
-import { ProjectEmergenceComponent } from './home/project-emergence/project-emergence.component';
-import { TechnicalPlanComponent } from './home/technical-plan/technical-plan.component';
-import { ProductAvailabilityComponent } from './home/product-availability/product-availability.component';
-import { ProjectManagementComponent } from './home/project-management/project-management.component';
-import { LiteratureCitedComponent } from './home/literature-cited/literature-cited.component';
-import { IntroProblemComponent } from './progress/intro-problem/intro-problem.component';
-import { SolutionVisionComponent } from './progress/solution-vision/solution-vision.component';
-import { ProjectRequirementsComponent } from './progress/project-requirements/project-requirements.component';
-import { IntroAppendComponent } from './progress/intro-append/intro-append.component';
-import { CorePagesComponent } from './progress/core-pages/core-pages.component';
-import { CollectionPagesComponent } from './progress/collection-pages/collection-pages.component';
-import { OccurrencePagesComponent } from './progress/occurrence-pages/occurrence-pages.component';
-import { TaxonPagesComponent } from './progress/taxon-pages/taxon-pages.component';
-import { ImagePagesComponent } from './progress/image-pages/image-pages.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-// import { AppRoutingModule } from '../../../../apps/symbiota2/src/app/app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DashboardComponent } from './secure/dashboard/dashboard.component';
+import { InteractionsComponent } from './public/interactions/interactions.component';
+
+import { NotFoundComponent } from './public/not-found/not-found.component';
+
+import { SidebarComponent } from './public/sidebar/sidebar.component';
 import { ScrollService } from './scroll.service';
+import { ContactComponent } from './public/contact/contact.component';
+import { FooterComponent } from './public/footer/footer.component';
+import { HeaderComponent } from './public/header/header.component';
+import { HelpPagesComponent } from './public/help-pages/help-pages.component';
+import { LoginComponent } from './secure/login/login.component';
+import { UsersComponent } from './secure/dashboard/users/users.component';
+import { MailingListComponent } from './secure/dashboard/mailing-list/mailing-list.component';
+import { EmailBoxComponent } from './secure/dashboard/email-box/email-box.component';
+import { ProfileComponent } from './secure/dashboard/profile/profile.component';
+import { RegisterComponent } from './secure/register/register.component';
+import { HomeComponent } from './public/home/home.component';
+import { LiteratureCitedComponent } from './public/home/literature-cited/literature-cited.component';
+import { ProductAvailabilityComponent } from './public/home/product-availability/product-availability.component';
+import { ProjectEmergenceComponent } from './public/home/project-emergence/project-emergence.component';
+import { ProjectGoalsComponent } from './public/home/project-goals/project-goals.component';
+import { ProjectManagementComponent } from './public/home/project-management/project-management.component';
+import { ProjectSummaryComponent } from './public/home/project-summary/project-summary.component';
+import { TechnicalPlanComponent } from './public/home/technical-plan/technical-plan.component';
+import { CollectionPagesComponent } from './public/progress/collection-pages/collection-pages.component';
+import { CorePagesComponent } from './public/progress/core-pages/core-pages.component';
+import { IntroAppendComponent } from './public/progress/intro-append/intro-append.component';
+import { IntroProblemComponent } from './public/progress/intro-problem/intro-problem.component';
+import { OccurrencePagesComponent } from './public/progress/occurrence-pages/occurrence-pages.component';
+import { ProgressComponent } from './public/progress/progress.component';
+import { ProjectRequirementsComponent } from './public/progress/project-requirements/project-requirements.component';
+import { SolutionVisionComponent } from './public/progress/solution-vision/solution-vision.component';
+import { TaxonPagesComponent } from './public/progress/taxon-pages/taxon-pages.component';
+import { ImagePagesComponent } from './public/progress/image-pages/image-pages.component';
+import { CredentialInterceptor } from './interceptors/credential.interceptor';
+import { SettingsComponent } from './secure/dashboard/settings/settings.component';
+import { GeneralComponent } from './secure/dashboard/general/general.component';
+import { ProfileModule } from './secure/dashboard/profile/profile.module';
+import { UsersModule } from './secure/dashboard/users/users.module';
+import { UserCreateComponent } from './secure/dashboard/user-create/user-create.component';
+import { UserCreateModule } from './secure/dashboard/user-create/user-create.module';
+import { UserEditModule } from './secure/dashboard/user-edit/user-edit.module';
+import { UserEditComponent } from './secure/dashboard/user-edit/user-edit.component';
 
 const routes: Routes = [
   {
@@ -74,12 +93,29 @@ const routes: Routes = [
   { path: 'interactions', component: InteractionsComponent },
   { path: 'help-pages', component: HelpPagesComponent },
   { path: 'contact', component: ContactComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: GeneralComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'mailing-list', component: MailingListComponent },
+      { path: 'email-box', component: EmailBoxComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'users/create', component: UserCreateComponent },
+      { path: 'users/:id/edit', component: UserEditComponent },
+      { path: 'settings', component: SettingsComponent },
+    ],
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    BrowserModule,
     // AppRoutingModule,
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
@@ -87,6 +123,13 @@ const routes: Routes = [
       useHash: false,
       // scrollOffset: [300, 0],
     }),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ProfileModule,
+    UsersModule,
+    UserCreateModule,
+    UserEditModule,
   ],
   declarations: [
     DashboardComponent,
@@ -115,8 +158,19 @@ const routes: Routes = [
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
+    LoginComponent,
+    RegisterComponent,
+    GeneralComponent,
+    SettingsComponent,
   ],
   exports: [RouterModule],
-  providers: [ScrollService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CredentialInterceptor,
+      multi: true,
+    },
+    ScrollService,
+  ],
 })
 export class UiModule {}
