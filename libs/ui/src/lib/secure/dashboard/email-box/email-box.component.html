@@ -1,0 +1,36 @@
+<form class="email-box-form" [formGroup]="form" (submit)="submit()">
+  <div class="mb-3">
+    <span class="email-box-close" routerLink="../">&#10006;</span>
+    <label>To</label>
+    <input
+      class="form-control"
+      name="to"
+      formControlName="to"
+      value="{{ emails }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label>Subject</label>
+    <input class="form-control" name="subject" formControlName="subject" />
+  </div>
+  <div class="mb-3">
+    <label>Message</label>
+    <textarea
+      style="height: 15rem"
+      class="form-control"
+      name="html"
+      formControlName="html"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label>Choose a file</label>
+    <input type="file" />
+  </div>
+
+  <button class="btn btn-outline-secondary">Send</button>
+  <span class="js-form-submission" *ngIf="process">
+    {{ processText }}
+  </span>
+  <span class="js-form-success" *ngIf="done">{{ doneText }} </span>
+  <span class="js-form-error" *ngIf="error"> {{ errorText }}</span>
+</form>

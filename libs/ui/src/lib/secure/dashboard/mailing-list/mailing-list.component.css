@@ -30,3 +30,8 @@
   border-radius: 0.4rem;
   box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
 }
+
+.highIndex {
+  pointer-events: none;
+  opacity: 0.3;
+}

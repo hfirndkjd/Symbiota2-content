@@ -41,7 +41,9 @@ export class AuthController {
       throw new BadRequestException('Passwords do not match!');
     }
 
-    const hashed = await bcrypt.hash(body.password, 12);
+    const salt = await bcrypt.genSalt();
+    const hashed = await bcrypt.hash(body.password, salt);
+    //const hashed = await bcrypt.hash(body.password, 12);
 
     return this.userService.create({
       firstName: body.firstName,

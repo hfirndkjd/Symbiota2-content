@@ -1,74 +1,170 @@
-<h2>Users</h2>
-<hr style="color: rgb(160, 160, 160)" />
-<h3>Bulk Options</h3>
-<select class="bulk-select">
-  <option value="email">Send email</option>
-  <option value="delete">Delete</option>
-</select>
-<button class="btn-delete" style="background-color: #18976b">Apply</button>
-<button
-  class="btn-delete"
-  style="background-color: #5962ea"
-  (click)="scroll('dashboard/users/create')"
->
-  Add user
-</button>
+<!-- <div [ngClass]="{ highIndex: router.url !== '/dashboard/users' }">
+  <h2>Users</h2>
+  <hr style="color: rgb(160, 160, 160)" />
 
-<div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col"><input type="checkbox" (change)="bulk($event)" /></th>
-        <th scope="col">#</th>
-        <th scope="col">First Name</th>
-        <th scope="col">LastName</th>
-        <th scope="col">Email</th>
-        <th scope="col">Description</th>
-        <th scope="col">Role</th>
-        <th scope="col">Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; let i = index">
-        <td style="width: 2%">
-          <input type="checkbox" [checked]="checks" />
-        </td>
-        <td style="width: 2%">{{ user.id }}</td>
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.email }}</td>
-        <td>will be added later</td>
-        <td>{{ user.role.name }}</td>
-        <td>
-          <button
-            class="btn-delete"
-            style="background-color: #18976b"
-            [routerLink]="['/dashboard/users', user.id, 'edit']"
-          >
-            Edit
-          </button>
-          <button
-            class="btn-delete"
-            style="background-color: rgb(226, 73, 73)"
-            (click)="delete($event, user.id, i)"
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <button
+    class="btn-delete"
+    style="background-color: #18976b"
+    routerLink="/dashboard/users/email-box"
+  >
+    Send Email
+  </button>
+  <button
+    class="btn-delete"
+    style="background-color: #5962ea"
+    (click)="scroll('dashboard/users/create')"
+  >
+    Add user
+  </button>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox" (change)="bulk($event)" /></th>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Email</th>
+          <th scope="col">Description</th>
+          <th scope="col">Role</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of emails; let i = index">
+          <td style="width: 2%">
+            <input type="checkbox" [checked]="checks" />
+          </td>
+          <td style="width: 2%">{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>will be added later</td>
+          <td>{{ user.role.name }}</td>
+          <td>
+            <button
+              class="btn-delete"
+              style="background-color: #18976b"
+              [routerLink]="['/dashboard/users', user.id, 'edit']"
+            >
+              Edit
+            </button>
+            <button
+              class="btn-delete"
+              style="background-color: rgb(226, 73, 73)"
+              (click)="delete($event, user.id, i)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <nav>
+    <ul class="pagination">
+      <li class="page-item">
+        <a href="javascript:void(0)" class="page-link" (click)="prev()"
+          >Previous</a
+        >
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0)" class="page-link" (click)="next()">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
-<nav>
-  <ul class="pagination">
-    <li class="page-item">
-      <a href="javascript:void(0)" class="page-link" (click)="prev()"
-        >Previous</a
-      >
-    </li>
-    <li class="page-item">
-      <a href="javascript:void(0)" class="page-link" (click)="next()">Next</a>
-    </li>
-  </ul>
-</nav>
+<router-outlet></router-outlet> -->
+
+<!-- <div [ngClass]="{ highIndex: router.url !== '/dashboard/users' }">
+  <h2>Users</h2>
+  <hr style="color: rgb(160, 160, 160)" />
+  <h3>Bulk Options</h3>
+  <select class="bulk-select">
+    <option value="email">Send email</option>
+    <option value="delete">Delete</option>
+  </select>
+  <button
+    class="btn-delete"
+    style="background-color: #18976b"
+    routerLink="/dashboard/mailing-list/email-box"
+    (click)="getChecks()"
+  >
+    Send Email
+  </button>
+  <button
+    class="btn-delete"
+    style="background-color: #5962ea"
+    (click)="scroll('dashboard/mailing-list/create')"
+  >
+    Add to list
+  </button>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox" (change)="bulk($event)" /></th>
+          <th scope="col">#</th>
+
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Description</th>
+          <th scope="col">Created at</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let email of emails; let i = index">
+          <td style="width: 2%">
+            <input
+              type="checkbox"
+              [checked]="checks"
+              id="i"
+              (click)="onSelect($event, '')"
+            />
+          </td>
+          <td style="width: 2%">{{ email.id }}</td>
+          <td>{{ email.name }}</td>
+          <td>{{ email.email }}</td>
+          <td>{{ email.description }}</td>
+          <td>{{ email.created_at }}</td>
+          <td>{{ email.role.name }}</td>
+          <td>
+            <button
+              class="btn-delete"
+              style="background-color: #18976b"
+              [routerLink]="['/dashboard/users', email.id, 'edit']"
+            >
+              Edit
+            </button>
+            <button
+              class="btn-delete"
+              style="background-color: rgb(226, 73, 73)"
+              (click)="delete($event, email.id, i)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <nav>
+    <ul class="pagination">
+      <li class="page-item">
+        <a href="javascript:void(0)" class="page-link" (click)="prev()"
+          >Previous</a
+        >
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0)" class="page-link" (click)="next()">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<router-outlet></router-outlet> -->

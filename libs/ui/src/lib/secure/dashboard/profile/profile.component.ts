@@ -49,4 +49,8 @@ export class ProfileComponent implements OnInit {
       .updatePassword(this.passwordForm.getRawValue())
       .subscribe((res) => console.log(res));
   }
+
+  // upload(e: any): void {
+  //   console.log(e.target.files);
+  // }
 }

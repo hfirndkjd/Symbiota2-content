@@ -49,6 +49,18 @@ import { UserCreateComponent } from './secure/dashboard/user-create/user-create.
 import { UserCreateModule } from './secure/dashboard/user-create/user-create.module';
 import { UserEditModule } from './secure/dashboard/user-edit/user-edit.module';
 import { UserEditComponent } from './secure/dashboard/user-edit/user-edit.component';
+import { RolesModule } from './secure/dashboard/roles/roles.module';
+import { RolesComponent } from './secure/dashboard/roles/roles.component';
+import { RoleCreateComponent } from './secure/dashboard/roles/role-create/role-create.component';
+import { RoleCreateModule } from './secure/dashboard/roles/role-create/role-create.module';
+import { RoleEditModule } from './secure/dashboard/roles/role-edit/role-edit.module';
+import { RoleEditComponent } from './secure/dashboard/roles/role-edit/role-edit.component';
+import { MailingListModule } from './secure/dashboard/mailing-list/mailing-list.module';
+import { EmailCreateModule } from './secure/dashboard/mailing-list/email-create/email-create.module';
+import { EmailEditModule } from './secure/dashboard/mailing-list/email-edit/email-edit.module';
+import { EmailCreateComponent } from './secure/dashboard/mailing-list/email-create/email-create.component';
+import { EmailEditComponent } from './secure/dashboard/mailing-list/email-edit/email-edit.component';
+import { EmailBoxModule } from './secure/dashboard/email-box/email-box.module';
 
 const routes: Routes = [
   {
@@ -98,12 +110,26 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: '', component: GeneralComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'mailing-list', component: MailingListComponent },
-      { path: 'email-box', component: EmailBoxComponent },
-      { path: 'profile', component: ProfileComponent },
+      {
+        path: 'users',
+        component: UsersComponent,
+        children: [{ path: 'email-box', component: EmailBoxComponent }],
+      },
       { path: 'users/create', component: UserCreateComponent },
       { path: 'users/:id/edit', component: UserEditComponent },
+      {
+        path: 'mailing-list',
+        component: MailingListComponent,
+        children: [{ path: 'email-box', component: EmailBoxComponent }],
+      },
+      { path: 'mailing-list/create', component: EmailCreateComponent },
+      { path: 'mailing-list/:id/edit', component: EmailEditComponent },
+      // { path: 'mailing-list', component: MailingListComponent },
+      { path: 'email-box', component: EmailBoxComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'roles', component: RolesComponent },
+      { path: 'roles/create', component: RoleCreateComponent },
+      { path: 'roles/:id/edit', component: RoleEditComponent },
       { path: 'settings', component: SettingsComponent },
     ],
   },
@@ -130,6 +156,13 @@ const routes: Routes = [
     UsersModule,
     UserCreateModule,
     UserEditModule,
+    RolesModule,
+    RoleCreateModule,
+    RoleEditModule,
+    MailingListModule,
+    EmailCreateModule,
+    EmailEditModule,
+    EmailBoxModule,
   ],
   declarations: [
     DashboardComponent,

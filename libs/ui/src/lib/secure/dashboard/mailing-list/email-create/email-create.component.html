@@ -1,0 +1,29 @@
+<h2>Create Email</h2>
+<form class="user-create-form" [formGroup]="form" (submit)="submit()">
+  <div class="mb-3">
+    <label>Name</label>
+    <input class="form-control" name="name" formControlName="name" />
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    <input class="form-control" name="email" formControlName="email" />
+  </div>
+  <div class="mb-3">
+    <label>Description</label>
+    <input
+      class="form-control"
+      name="description"
+      formControlName="description"
+    />
+  </div>
+  <!-- <div class="mb-3">
+    <label>Role</label>
+    <select name="roleId" class="form-control" formControlName="roleId">
+      <option *ngFor="let role of roles" [ngValue]="role.id">
+        {{ role.name }}
+      </option>
+    </select>
+  </div> -->
+
+  <button class="btn btn-outline-secondary">Save</button>
+</form>

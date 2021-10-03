@@ -1,0 +1,48 @@
+<h2>Roles</h2>
+<hr style="color: rgb(160, 160, 160)" />
+<!-- <h3>Bulk Options</h3>
+<select class="bulk-select">
+  <option value="email">Send email</option>
+  <option value="delete">Delete</option>
+</select> -->
+<!-- <button class="btn-delete" style="background-color: #18976b">Apply</button> -->
+<button
+  class="btn-delete"
+  style="background-color: #5962ea"
+  (click)="scroll('dashboard/roles/create')"
+>
+  Add role
+</button>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let role of roles; let i = index">
+        <td>{{ role.id }}</td>
+        <td>{{ role.name }}</td>
+        <td>
+          <button
+            class="btn-delete"
+            style="background-color: #18976b"
+            [routerLink]="['/dashboard/roles', role.id, 'edit']"
+          >
+            Edit
+          </button>
+          <button
+            class="btn-delete"
+            style="background-color: rgb(226, 73, 73)"
+            (click)="delete($event, role.id, i)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

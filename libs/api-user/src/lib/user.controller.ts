@@ -14,6 +14,7 @@ import {
   Req,
   UseGuards,
   UseInterceptors,
+  UsePipes,
 } from '@nestjs/common';
 import { UserCreateDto } from './model/user-create.dto';
 import { User } from './user.entity';
@@ -26,6 +27,9 @@ import { AuthService } from 'libs/api-auth/src/lib/api-auth.service';
 import { Request } from 'express';
 // import { PaginatedResult } from 'libs/api-common/src/lib/paginated-result.interface';
 import { HasPermission } from 'libs/api-permission/src/lib/api-has-permission.decorator';
+import { RegisterDto } from 'libs/api-auth/src/lib/model/register.dto';
+import { passDto } from './model/password.dto';
+// import { RegisterDto } from 'libs/api-auth/src/lib/model/register.dto';
 
 @UseInterceptors(ClassSerializerInterceptor, AuthInterceptor)
 @UseGuards(AuthGuard)
@@ -45,7 +49,8 @@ export class UserController {
   @Post()
   @HasPermission('users')
   async createUser(@Body() body: UserCreateDto): Promise<User> {
-    const password = await bcrypt.hash('1234', 12);
+    const salt = await bcrypt.genSalt();
+    const password = await bcrypt.hash('A12345', salt);
 
     const { roleId = 3, ...data } = body;
 
@@ -78,18 +83,20 @@ export class UserController {
   }
 
   @Put('password')
-  async updatePassword(
-    @Req() request: Request,
-    @Body('password') password: string,
-    @Body('passwordConfirm') passwordConfirm: string
-  ) {
+  @UsePipes(RegisterDto)
+  async updatePassword(@Req() request: Request, @Body() body: passDto) {
+    const { password, passwordConfirm } = body;
     if (password !== passwordConfirm) {
       throw new BadRequestException('Passwords do not match!');
     }
 
     const id = await this.authService.userId(request);
 
-    const hashed = await bcrypt.hash(password, 12);
+    const salt = await bcrypt.genSalt();
+
+    const hashed = await bcrypt.hash(password, salt);
+
+    //const hashed = await bcrypt.hash(password, 12);
 
     await this.userService.update(id, {
       password: hashed,

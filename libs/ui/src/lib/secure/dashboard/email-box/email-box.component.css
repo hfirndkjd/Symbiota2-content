@@ -1,3 +1,49 @@
 .custom-style {
   padding-top: 10rem;
 }
+
+.email-box-form {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  height: auto;
+  width: 40rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.email-box-form .btn {
+  padding: 0.5rem 3rem;
+  background-color: #117451;
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 0.3rem;
+}
+
+.email-box-form input,
+.email-box-form select {
+  height: 3.4rem;
+  border-radius: 0.3rem;
+  width: 80%;
+}
+
+.email-box-form select {
+  height: 6rem !important;
+}
+
+.email-box-form label {
+  font-size: 1.4rem;
+}
+
+.email-box-close {
+  float: right;
+  color: red;
+  cursor: pointer;
+  font-weight: bolder;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+}

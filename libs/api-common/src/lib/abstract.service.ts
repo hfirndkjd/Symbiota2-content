@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { PaginatedResult } from './paginated-result.interface';
 
@@ -32,9 +36,19 @@ export abstract class AbstractService {
   }
 
   async create(data): Promise<any> {
-    const newUser = await this.repository.save(data);
-    delete newUser.password;
-    return newUser;
+    try {
+      const newUser = await this.repository.save(data);
+      delete newUser.password;
+      return newUser;
+    } catch (error) {
+      if (error.code === '23505') {
+        // duplicate user
+        throw new ConflictException('This record already exists');
+      } else {
+        throw new InternalServerErrorException();
+      }
+      //console.log(error.code);
+    }
   }
 
   async findOne(condition, relations = []): Promise<any> {
