@@ -17,18 +17,19 @@ import { EmailUpdateDto } from './model/email-update.dto';
 import { HasPermission } from 'libs/api-permission/src/lib/api-has-permission.decorator';
 import { SendEmailDto } from './model/send-email.dto';
 
-@UseGuards(AuthGuard)
 @Controller('emails')
 export class EmailController {
   constructor(private emailService: EmailService) {}
 
   @Get()
+  @UseGuards(AuthGuard)
   @HasPermission('emails')
   async getAll(@Query('page') page = 1) {
     return this.emailService.paginate(page);
   }
 
   @Post()
+  @UseGuards(AuthGuard)
   @HasPermission('emails')
   async create(@Body() body: EmailCreateDto) {
     return this.emailService.create(body);
@@ -40,12 +41,14 @@ export class EmailController {
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard)
   @HasPermission('emails')
   async get(@Param('id') id: number) {
     return this.emailService.findOne({ id });
   }
 
   @Put(':id')
+  @UseGuards(AuthGuard)
   @HasPermission('emails')
   async update(@Param('id') id: number, @Body() body: EmailUpdateDto) {
     await this.emailService.update(id, body);
@@ -54,6 +57,7 @@ export class EmailController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard)
   @HasPermission('emails')
   async delete(@Param('id') id: number) {
     return this.emailService.delete(id);

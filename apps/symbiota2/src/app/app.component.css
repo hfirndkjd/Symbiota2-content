@@ -203,8 +203,11 @@ li {
   padding: 1rem 2rem;
   border: 0;
   border-radius: 0.3rem;
-  margin: 1rem 0;
+  margin: 0.2rem 0;
   color: var(--color-text-dark-1);
+}
+.footer-newsletter__input[type='email'] {
+  margin-bottom: 0.6rem !important;
 }
 .footer-support a:link,
 .footer-support a:visited {
@@ -220,6 +223,8 @@ input {
 .btn-footer {
   background-color: #0c5b3f;
   border: none;
+  width: 100%;
+  margin-top: 0.6rem;
   font-size: 90%;
   border-radius: 0.3rem;
   text-align: center;

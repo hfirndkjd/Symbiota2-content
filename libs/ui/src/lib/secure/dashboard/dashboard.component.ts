@@ -17,7 +17,9 @@ export class DashboardComponent implements OnInit {
     private scrollService: ScrollService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    // const cook = getCookie;
+  }
 
   scroll(link: string, fragment: string = '') {
     //console.log('clicked', link);

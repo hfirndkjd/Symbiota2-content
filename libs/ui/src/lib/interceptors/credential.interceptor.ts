@@ -16,6 +16,10 @@ export class CredentialInterceptor implements HttpInterceptor {
     const req = request.clone({
       withCredentials: true,
     });
-    return next.handle(req);
+    if (req.headers.get('skip')) {
+      return next.handle(request);
+    } else {
+      return next.handle(req);
+    }
   }
 }

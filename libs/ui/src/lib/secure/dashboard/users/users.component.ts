@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Email } from '../../../interfaces/email';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../../interfaces/user';
 import { ScrollService } from '../../../scroll.service';
-import { MailerUserService } from '../../../services/mailer-user.service';
+import { MailerMailingListService } from '../../../services/mailer-mailing-list.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -13,34 +13,24 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  emails: Email[] = [];
+  users: User[] = [];
   emailList: string[] = [];
   page = 1;
   last_page!: number;
   checks = false;
   data = [];
+
   constructor(
-    private emailService: UserService,
+    private userService: UserService,
+    private mailerMailingListService: MailerMailingListService,
     private scrollService: ScrollService,
-    private mailerUserService: MailerUserService,
     public router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.load();
-    //console.log('email list: ', this.emailList);
-    console.log(this.router.url);
-  }
-
-  scroll(link: string, fragment = '') {
-    this.scrollService.onScroll(link, fragment);
-  }
-
   load(): void {
-    this.emailService.all(this.page).subscribe((res: any) => {
-      //console.log('this is res: ', res);
-      this.emails = res.data;
-      console.log('emails  : ', res.data[0]);
+    this.userService.all(this.page).subscribe((res: any) => {
+      this.users = res.data;
+      console.log(res.data);
       this.last_page = res.meta.last_page;
     });
   }
@@ -61,6 +51,35 @@ export class UsersComponent implements OnInit {
     this.load();
   }
 
+  // bulk(e: any) {
+  //   if (e.target.checked === true) {
+  //     this.checks = true;
+  //     console.log(e.target.checked);
+  //   } else {
+  //     this.checks = false;
+  //   }
+  // }
+
+  delete(e: any, id: number, index: number) {
+    //console.log(e.target.checked, id);
+    setTimeout(() => {
+      if (confirm('Are you sure you want to delete this record?')) {
+        this.userService.delete(id).subscribe(() => {
+          this.users = this.users.filter((u) => u.id !== id);
+        });
+      }
+    }, 1000);
+  }
+
+  ngOnInit(): void {
+    this.load();
+    console.log('email list: ', this.emailList);
+  }
+
+  scroll(link: string, fragment = '') {
+    this.scrollService.onScroll(link, fragment);
+  }
+
   bulk(e: any) {
     //console.log('this is bulk: ' + e.target);
     const items =
@@ -75,36 +94,25 @@ export class UsersComponent implements OnInit {
       this.emailList = [];
       for (let i = 0; i < items.length; i++) {
         //this.emailList.push('', items[i].children[3].textContent);
-        this.onSelect('', items[i].children[3].textContent);
+        this.onSelect('', items[i].children[4].textContent);
       }
-      this.mailerUserService.setReceivers(this.emailList);
+      this.mailerMailingListService.setReceivers(this.emailList);
     } else {
       this.checks = false;
       for (let i = 0; i < items.length; i++) {
         //this.emailList.splice(items[i].children[3].textContent, i);
-        this.onSelect('', items[i].children[3].textContent);
+        this.onSelect('', items[i].children[4].textContent);
       }
-      this.mailerUserService.setReceivers(this.emailList);
+      this.mailerMailingListService.setReceivers(this.emailList);
       console.log(this.emailList);
     }
-  }
-
-  delete(e: any, id: number, index: number) {
-    //console.log(e.target.checked, id);
-    setTimeout(() => {
-      if (confirm('Are you sure you want to delete this record?')) {
-        this.emailService.delete(id).subscribe(() => {
-          this.emails = this.emails.filter((u) => u.id !== id);
-        });
-      }
-    }, 1000);
   }
 
   onSelect(item: any, item2: string) {
     if (item) {
       const email =
         item.target.parentElement.nextElementSibling.nextElementSibling
-          .nextElementSibling.textContent;
+          .nextElementSibling.nextElementSibling.textContent;
 
       const idx = this.emailList.indexOf(email);
 
@@ -113,7 +121,7 @@ export class UsersComponent implements OnInit {
       } else {
         this.emailList.splice(idx, 1);
       }
-      this.mailerUserService.setReceivers(this.emailList);
+      this.mailerMailingListService.setReceivers(this.emailList);
       console.log(this.emailList);
     }
 
@@ -124,19 +132,8 @@ export class UsersComponent implements OnInit {
       } else {
         this.emailList.splice(0, 1);
       }
-      this.mailerUserService.setReceivers(this.emailList);
+      this.mailerMailingListService.setReceivers(this.emailList);
       //console.log(this.emailList);
     }
-  }
-
-  getChecks() {
-    // console.log(this.form.getRawValue());
-    //const formData = this.form.getRawValue();
-    // const data = {
-    //   name: formData.name,
-    //   permissions: formData.permissions
-    //     .filter((p: any) => p.value === true)
-    //     .map((p: any) => p.id),
-    // };
   }
 }

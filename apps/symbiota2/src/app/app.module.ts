@@ -6,8 +6,7 @@ import { UiModule } from '@symbiota/ui';
 import { HttpClientModule } from '@angular/common/http';
 // import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { RegisterModule } from './register/register.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     UiModule,
     RouterModule,
-    FormsModule,
     ReactiveFormsModule,
   ],
   providers: [],

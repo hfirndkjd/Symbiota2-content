@@ -29,11 +29,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // onSubmit() {
+  //   //postData: { email: string; password: string }
+  //   // console.log(this.form.getRawValue());
+  //   this.authService
+  //     .login(this.form.getRawValue())
+  //     .subscribe(() => this.router.navigate(['dashboard']));
+  // }
+
   onSubmit() {
     //postData: { email: string; password: string }
     // console.log(this.form.getRawValue());
     this.authService
       .login(this.form.getRawValue())
-      .subscribe(() => this.router.navigate(['dashboard']));
+      .subscribe((res) => console.log('this is res inside login :', res));
   }
 }

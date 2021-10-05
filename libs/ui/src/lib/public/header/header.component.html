@@ -1,1 +1,119 @@
-<p>header works!</p>
+<nav class="main-nav">
+  <input type="checkbox" id="searchbox" class="checkhack" />
+  <div class="nav-container">
+    <div class="logo-container">
+      <a routerlink="/"
+        ><img
+          src="assets/img/Symbiota2logo-150wide.png"
+          alt="Logo"
+          class="logo"
+      /></a>
+    </div>
+    <input
+      id="menu-toggle"
+      type="radio"
+      name="tst"
+      class="menu-toggle hidden"
+    /><input
+      id="cross-toggle"
+      type="radio"
+      name="tst"
+      class="cross-toggle hidden"
+    />
+    <div class="nav-holder">
+      <div class="cross__icon-container">
+        <label for="cross-toggle" class="cross-toggle"></label
+        ><svg class="cross__icon">
+          <use xlink:href="assets/img/sprite.svg#icon-cross"></use>
+        </svg>
+      </div>
+      <div class="nav">
+        <ul class="nav-list">
+          <li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{
+              exact: true
+            }"
+          >
+            <a [routerLink]="['/']">Home</a>
+            <ul>
+              <li><a (click)="scroll('/', 'proposal')">Proposal</a></li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/progress">Progress</a>
+            <ul>
+              <li><a (click)="scroll('progress', 'todo')">To do </a></li>
+              <li><a (click)="scroll('progress', 'byYear')">By year </a></li>
+              <li><a (click)="scroll('progress', 'websites')">Websites </a></li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/interactions">Interactions</a>
+            <ul>
+              <li>
+                <a (click)="scroll('interactions', 'open-discussion')"
+                  >Open discussion</a
+                >
+              </li>
+              <li>
+                <a (click)="scroll('interactions', 'wish-list')">Wish lists</a>
+              </li>
+              <li>
+                <a (click)="scroll('interactions', 'presentation')"
+                  >Presentation</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/help-pages">Help pages</a>
+            <ul>
+              <li>
+                <a (click)="scroll('help-pages', 'collection-metadata')"
+                  >Collection metadata</a
+                >
+              </li>
+              <li>
+                <a (click)="scroll('help-pages', 'ecological-fields')"
+                  >Ecological fields</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/contact">Contact Us</a>
+          </li>
+          <li routerLinkActive="active">
+            <select (change)="scroll(select.value)" class="nav-options" #select>
+              <option value="select" selected disabled>Select</option>
+              <option value="dashboard">Login</option>
+              <option value="login">Logout</option>
+              <option value="dashboard/profile">Profile</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+      <div class="searchIcon__holder">
+        <label for="searchbox" class="search-label"></label
+        ><svg class="search__icon">
+          <use xlink:href="assets/img/sprite.svg#icon-search"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="menu-container">
+      <label for="menu-toggle" class="menu-toggle"></label
+      ><svg class="menu__icon">
+        <use xlink:href="assets/img/sprite.svg#icon-menu"></use>
+      </svg>
+    </div>
+  </div>
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Type here to search"
+      autofocus=""
+      class="search-bar__input"
+    /><a href="#" class="btn search-bar__button">Search</a>
+  </div>
+</nav>

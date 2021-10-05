@@ -30,7 +30,7 @@ export class MailingListComponent implements OnInit {
   ngOnInit(): void {
     this.load();
     //console.log('email list: ', this.emailList);
-    console.log(this.router.url);
+    //console.log(this.router.url);
   }
 
   scroll(link: string, fragment = '') {

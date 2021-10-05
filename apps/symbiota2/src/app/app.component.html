@@ -132,16 +132,34 @@
       developers and provide end-users with greater functionality.
     </p>
   </div>
-  <div class="footer-newsletter">
-    <h3 class="margin-bottom-mid">Newsletter</h3>
-    <p>Subscribe to receive inspiration, news, and ideas in your inbox.</p>
-    <input
-      type="text"
-      placeholder="Enter your email"
-      class="footer-newsletter__input"
-    />
-    <a class="btn btn-footer">Subscribe</a>
-  </div>
+  <form [formGroup]="form" (submit)="submit()">
+    <div class="footer-newsletter">
+      <h3 class="margin-bottom-mid">Newsletter</h3>
+      <p>Subscribe to receive inspiration, news, and ideas in your inbox.</p>
+      <input
+        formControlName="name"
+        name="name"
+        type="text"
+        placeholder="Enter your name"
+        class="footer-newsletter__input"
+      />
+      <input
+        formControlName="email"
+        name="email"
+        email
+        placeholder="Enter your email"
+        class="footer-newsletter__input"
+      />
+      <button class="btn btn-footer" type="submit" [disabled]="">
+        Subscribe
+      </button>
+      <span class="js-form-submission" *ngIf="process">
+        {{ processText }}
+      </span>
+      <span class="js-form-success" *ngIf="done">{{ doneText }} </span>
+      <span class="js-form-error" *ngIf="error"> {{ errorText }}</span>
+    </div>
+  </form>
   <div class="footer-support">
     <h3 class="margin-bottom-mid">Help/Support</h3>
     <ul>

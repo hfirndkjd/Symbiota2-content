@@ -13,8 +13,7 @@ import { NotFoundComponent } from './public/not-found/not-found.component';
 import { SidebarComponent } from './public/sidebar/sidebar.component';
 import { ScrollService } from './scroll.service';
 import { ContactComponent } from './public/contact/contact.component';
-import { FooterComponent } from './public/footer/footer.component';
-import { HeaderComponent } from './public/header/header.component';
+
 import { HelpPagesComponent } from './public/help-pages/help-pages.component';
 import { LoginComponent } from './secure/login/login.component';
 import { UsersComponent } from './secure/dashboard/users/users.component';
@@ -188,8 +187,6 @@ const routes: Routes = [
     TaxonPagesComponent,
     ImagePagesComponent,
     NotFoundComponent,
-    FooterComponent,
-    HeaderComponent,
     SidebarComponent,
     LoginComponent,
     RegisterComponent,
